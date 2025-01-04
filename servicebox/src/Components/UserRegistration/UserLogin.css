@@ -1,0 +1,101 @@
+/* Container for the sign-up form */
+.signup-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading style */
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group wrapper */
+.signup-form .form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styles */
+.signup-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input field styles */
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Button styles */
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.signup-button:hover {
+  background-color: #218838;
+}
+
+/* Error message styles */
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Already Signed In section */
+.already-signed-in {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Link in the "Already Signed In?" section */
+.already-signed-in a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Link hover effect */
+.already-signed-in a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 15px;
+  }
+
+  .signup-button {
+    font-size: 14px;
+  }
+
+  .already-signed-in p {
+    font-size: 12px;
+  }
+}
