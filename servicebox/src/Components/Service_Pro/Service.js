@@ -38,7 +38,6 @@ const Service = () => {
     if (validateForm()) {
       alert("Form submitted successfully!");
       console.log("Form Data:", formData);
-      // Add further form submission logic here
     }
   };
 
