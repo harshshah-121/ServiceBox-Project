@@ -1,0 +1,123 @@
+/* Layout container for header, sidebar, and main content */
+.admin-layout {
+    display: flex;
+    flex-direction: column; /* Header on top and layout below */
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Main layout container with sidebar and content */
+  .layout-container {
+    display: flex;
+    flex: 1; /* Ensure the container stretches to fill available space */
+    position: relative;
+  }
+  
+  /* Sidebar Styling */
+  .admin-sidebar {
+    width: 240px; /* Width of the sidebar */
+    background-color: #2c3e50;
+    color: #fff;
+    height: 100%;
+    position: fixed;
+    top: 60px; /* Offset for header height */
+    left: 0;
+    padding-top: 20px;
+    z-index: 5; /* Ensure sidebar stays below the header */
+  }
+  
+  .sidebar-header h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .sidebar-menu li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-link:hover {
+    background-color: #34495e;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    margin-left: 200px;
+    /* margin-right: -200px; Offset for fixed sidebar */
+    padding: 20px;
+    width: calc(100% - 200px); /*Ensure content width adjusts with sidebar*/
+    background-color: #f5f7fa;
+    overflow-y: auto; /* Scrollable content */
+    margin-top: 60px; /* Offset for fixed header */
+  }
+  
+  /* Header Styling */
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Ensure header stays on top */
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .header-center {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  

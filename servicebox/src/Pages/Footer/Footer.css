@@ -1,0 +1,19 @@
+/* Styling for the footer inside the sidebar */
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;              /* Stick the footer to the bottom of the sidebar */
+    left: 0;
+    width: 100%;            /* Full width of the sidebar */
+    background-color: #333; /* Dark background color */
+    color: white;           /* White text color */
+    text-align: center;     /* Center align the text */
+    padding: 10px 20px;     /* Padding for the footer content */
+    font-size: 14px;        /* Small text size for the footer */
+    border-top: 1px solid #444; /* Optional: Border separating footer from content */
+  }
+  
+  /* Optional: Make footer text smaller and aligned */
+  .sidebar-footer p {
+    margin: 0;
+  }
+  

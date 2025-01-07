@@ -1,0 +1,98 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 200px; /* Fixed width for the sidebar */
+  background-color: #34495e; /* Sidebar background color */
+  color: white;
+  position: fixed; /* Fixed position to keep it in place */
+  top: 60px; /* Below the header */
+  bottom: 0; /* Extend to the bottom */
+  padding: 20px;
+}
+
+/* Sidebar Container */
+.admin-sidebar {
+  position: fixed;
+  top: 60px; /* Adjust this to the height of your header */
+  left: 0;
+  width: 200px;
+  height: calc(100% - 60px); /* Adjust to prevent overlap with header */
+  background-color: #2c3e50; /* Dark background */
+  color: #ecf0f1; /* Light text */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 100; /* Ensures sidebar stays above main content */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: normal;
+  background-color: #34495e; /* Slightly lighter background */
+  color: #ecf0f1;
+  border-bottom: 1px solid #7f8c8d;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Makes menu take remaining space */
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: block;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #3498db; /* Highlight on hover */
+  padding-left: 30px; /* Slight indent effect on hover */
+  color: #ffffff; /* Ensure text is clearly visible */
+}
+
+/* Active Link */
+.sidebar-link.active {
+  background-color: #1abc9c; /* Active link color */
+  font-weight: bold;
+}
+
+/* Optional: Adding padding for each link */
+.sidebar-link {
+  padding: 10px 20px;
+}
+
+/* Ensure the header stays above the sidebar */
+/* .admin-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 200;  Ensure the header is above the sidebar 
+} */
+
+/* Add space below the header to prevent overlap with content */
+body {
+  padding-top: 0px; /* Adjust this value based on the header's height */
+}
