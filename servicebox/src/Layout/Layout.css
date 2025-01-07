@@ -1,8 +1,7 @@
-/* Layout container for header, sidebar, and main content */
 .admin-layout {
     display: flex;
-    flex-direction: column; /* Header on top and layout below */
-    height: 100vh; /* Full viewport height */
+    flex-direction: column; 
+    height: 100vh; 
   }
   
   /* Main layout container with sidebar and content */

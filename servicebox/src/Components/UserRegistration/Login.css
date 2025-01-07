@@ -65,15 +65,3 @@
     font-size: 12px;
     margin-top: 5px;
   }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 480px) {
-    .login-container {
-      padding: 15px;
-    }
-  
-    .login-button {
-      font-size: 14px;
-    }
-  }
-  

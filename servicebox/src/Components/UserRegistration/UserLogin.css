@@ -84,18 +84,3 @@
 .already-signed-in a:hover {
   text-decoration: underline;
 }
-
-/* Responsive design for smaller screens */
-@media (max-width: 480px) {
-  .signup-container {
-    padding: 15px;
-  }
-
-  .signup-button {
-    font-size: 14px;
-  }
-
-  .already-signed-in p {
-    font-size: 12px;
-  }
-}
