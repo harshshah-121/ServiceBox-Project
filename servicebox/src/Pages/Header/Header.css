@@ -1,0 +1,93 @@
+.header {
+  height: 60px; /* Fixed height for the header */
+  background-color: #2c3e50; /* Header background color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+
+/* General header styles */
+.admin-header {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff; 
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add space below the header to prevent overlap with content */
+body {
+  padding-top: 60px; /* Adjust this value based on the header's height */
+}
+
+/* Left section (logo) */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 70px;
+  height: 35px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Center section (search bar) */
+.header-center {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Right section (icons and profile) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.notification-icon {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.notification-icon:hover {
+  color: #333;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
