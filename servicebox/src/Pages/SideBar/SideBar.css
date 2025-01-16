@@ -31,9 +31,9 @@
 
 /* Sidebar Header */
 .sidebar-header {
-  padding: 20px;
+  /* padding: 5px; */
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: normal;
   background-color: #34495e;
   color: #ecf0f1;
@@ -55,8 +55,8 @@
   padding: 15px 20px;
   color: #ecf0f1;
   text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  font-size: 14px;
+  /* transition: background-color 0.3s ease, padding-left 0.3s ease; */
 }
 
 .sidebar-link:hover {

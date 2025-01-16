@@ -26,7 +26,6 @@ const MainContent = () => {
       </div>
 
       <div className="content">
-        {/* Example Cards for the Main Content */}
         <div className="content-card">
           <h2>Total Users</h2>
           <p>1,230</p>
@@ -49,7 +48,6 @@ const MainContent = () => {
         </div>
       </div>
 
-      {/* Full Month Medium Graph */}
       <div className="medium-graph">
         <h3>Bookings Overview (Full Year)</h3>
         <ResponsiveContainer width="100%" height={300}>
@@ -57,8 +55,8 @@ const MainContent = () => {
             <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={60} />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="BookingsDone" fill="#8884d8" barSize={20} />
-            <Bar dataKey="BookingsCanceled" fill="#82ca9d" barSize={20} />
+            <Bar dataKey="BookingsDone" fill="#8884d8" barSize={15} />
+            <Bar dataKey="BookingsCanceled" fill="#82ca9d" barSize={15} />
           </BarChart>
         </ResponsiveContainer>
       </div>

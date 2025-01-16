@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom"; 
+import "./AdminLogin.css";
 
 
-function AdminDashboard() {
+function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
 
   const handleValidation = () => {
     let valid = true;
@@ -28,7 +31,12 @@ function AdminDashboard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      alert("Login Successful!");
+      if (email === "Admin1@gmail.com" && password === "Admin123") {
+        alert("Login Successful!");
+        navigate("/admin-dashboard");
+      } else {
+        alert("Invalid email or password.");
+      }
     }
   };
 
@@ -81,4 +89,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
+export default AdminLogin;
