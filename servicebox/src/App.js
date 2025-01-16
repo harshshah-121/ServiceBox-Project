@@ -1,36 +1,33 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import UserLogin from "./Components/UserRegistration/UserLogin";
-// import Login from "./Components/UserRegistration/Login";
-// import S_Registration from "./Components/Service_Pro/S_Registration";
-// import Header from "./Pages/Header/Header";
-// import Sidebar from "./Pages/SideBar/SideBar";
 import MainContent from "./Pages/MainContent/MainContent";
 import Layout from "./Layout/Layout";
-// import Footer from "./Pages/Footer/Footer";
+// import AdminDashboard from "./Pages/SideBar/SideBar-Link/AdminDashboard";
+import AdminLogin from "./Components/AdminLogin/AdminLogin";
+import ManageUser from "./Pages/SideBar/SideBar-Link/ManageUser";
+import ServiceProvider from "./Pages/SideBar/SideBar-Link/ServiceProvider";
+import Service from "./Pages/SideBar/SideBar-Link/Service";
+import ServiceRequest from "./Pages/SideBar/SideBar-Link/ServiceRequest";
+import Complaint from "./Pages/SideBar/SideBar-Link/Complaint";
+import Feedback from "./Pages/SideBar/SideBar-Link/Feedback";
 
 const App = () => {
   return (
     <>
-    {/* // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<UserLogin />} />
-    //     <Route path="/login" element={<Login />} />
-    //   </Routes>
-    // </Router>
-    // <S_Registration/> */}
-    {/* <Footer/> */}
-     {/* <MainContent/> */}
-     {/* <Sidebar/>
-     <Header/>  */}
      <Router>
       <Routes>
-        {/* <Route path="/" element={<UserLogin />} /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/" element={<Layout><MainContent/></Layout>} />
+        <Route path="/" element={<AdminLogin />} /> 
+        <Route path="/admin-dashboard" element={<Layout><MainContent /></Layout>} />
+        <Route path="/admin-manage-user" element={<Layout><ManageUser /></Layout>} />
+        <Route path="/admin-manage-service-provider" element={<Layout><ServiceProvider /></Layout>} />
+        <Route path="/admin-manage-service" element={<Layout><Service /></Layout>} />
+        <Route path="/admin-manage-service-request" element={<Layout><ServiceRequest /></Layout>} />
+        <Route path="/admin-manage-complaint" element={<Layout><Complaint /></Layout>} />
+        <Route path="/admin-manage-feedback" element={<Layout><Feedback /></Layout>} />
       </Routes>
     </Router>
     </>
+    // <AdminDashboard/>
   );
 };
 

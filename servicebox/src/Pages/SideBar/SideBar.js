@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./SideBar.css";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    alert("You have been logged out.");
+    navigate("/");
+  };
   return (
     <aside className="admin-sidebar">
       <div className="sidebar-header">
@@ -34,11 +41,6 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="/admin-manage-service-Monitoring Service" className="sidebar-link">
-            Monitoring Service
-          </a>
-        </li>
-        <li>
           <a href="/admin-manage-complaint" className="sidebar-link">
             Complains
           </a>
@@ -49,12 +51,7 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="/admin-manage-package" className="sidebar-link">
-            Package
-          </a>
-        </li>
-        <li>
-          <a href="/admin-manage-service-LogOut" className="sidebar-link">
+          <a onClick={handleLogout} className="sidebar-link" style={{ cursor: "pointer" }}>
             Log Out
           </a>
         </li>

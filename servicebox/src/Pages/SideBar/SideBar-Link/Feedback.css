@@ -1,0 +1,43 @@
+.feedback {
+    padding: 20px;
+  }
+  
+  .feedback h2 {
+    margin-bottom: 15px;
+  }
+  
+  .feedback p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .feedback ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  
+  .feedback ul li {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid black;
+  }
+  
+  .feedback-table th,
+  .feedback-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    border: 2px solid black;
+  }
+  
+  .feedback-table th {
+    background-color: #f4f4f4;
+  }
+  
