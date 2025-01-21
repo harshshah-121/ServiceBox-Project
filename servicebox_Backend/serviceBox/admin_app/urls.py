@@ -1,9 +1,6 @@
-from django.contrib import admin
 from django.urls import path
-from admin_app import views
-from rest_framework_simplejwt.views import (TokenObtainPairView,TokenRefreshView,)
+from .views import AdminLoginView
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('/aa',aa.views),
+    path('login/', AdminLoginView.as_view(), name='admin-login'),
 ]

@@ -1,16 +1,32 @@
-from django.shortcuts import render,HttpResponse
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
-# from rest_framework_.decorators import api_view
+from django.contrib.auth import authenticate
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
 
-# Create your views here.
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
+class AdminLoginView(APIView):  
+    permission_classes = [AllowAny]  # No authentication required to access this endpoint
 
-        # Add custom claims
-        token['name'] = user.name
-        # ...
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
 
-        return token
+        # Authenticate the user
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # Check if the user is a superuser (admin)
+            if user.is_superuser:
+                return Response({
+                    "message": "Login successful",
+                    "username": user.username
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response({
+                    "error": "User is not an admin"
+                }, status=status.HTTP_403_FORBIDDEN)
+        else:
+            return Response({
+                "error": "Invalid credentials"
+            }, status=status.HTTP_401_UNAUTHORIZED)
