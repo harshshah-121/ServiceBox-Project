@@ -3,6 +3,8 @@ import string
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from .models import User
+from django.contrib.auth.hashers import check_password
+
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -22,3 +24,29 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         validated_data['user_password'] = make_password(validated_data['user_password'])
         
         return super().create(validated_data)
+    
+
+class UserLoginSerializer(serializers.Serializer):
+    user_email = serializers.EmailField()
+    user_password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        email = data.get('user_email')
+        password = data.get('user_password')
+
+        try:
+            user = User.objects.get(user_email=email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError("Invalid email or password.")
+
+        if not check_password(password, user.user_password):
+            raise serializers.ValidationError("Invalid email or password.")
+
+        if not user.email_verified:
+            raise serializers.ValidationError("Email is not verified.")
+
+        return {
+            "user_id": user.user_id,
+            "user_name": user.user_name,
+            "user_email": user.user_email,
+        }
