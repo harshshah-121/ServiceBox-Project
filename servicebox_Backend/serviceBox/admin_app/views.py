@@ -6,17 +6,15 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
 
 class AdminLoginView(APIView):  
-    permission_classes = [AllowAny]  # No authentication required to access this endpoint
+    permission_classes = [AllowAny]  
 
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
 
-        # Authenticate the user
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            # Check if the user is a superuser (admin)
             if user.is_superuser:
                 return Response({
                     "message": "Login successful",
