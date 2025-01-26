@@ -1,4 +1,5 @@
 from django.db import models
+import random
 
 class User(models.Model):
     user_id = models.CharField(max_length=10, primary_key=True)
@@ -13,6 +14,11 @@ class User(models.Model):
     user_gender = models.CharField(max_length=6, null=True, blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     email_verified = models.BooleanField(default=False)
+    otp = models.IntegerField(null=True, blank=True)
+
+    def generate_otp(self):
+        self.otp = random.randint(100000, 999999)
+        self.save()
 
     class Meta:
         db_table = 'user'

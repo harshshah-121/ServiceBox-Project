@@ -50,3 +50,24 @@ class UserLoginSerializer(serializers.Serializer):
             "user_name": user.user_name,
             "user_email": user.user_email,
         }
+    
+
+class SendOTPSerializer(serializers.Serializer):
+    user_email = serializers.EmailField()
+
+    def validate_user_email(self, value):
+        if not User.objects.filter(user_email=value).exists():
+            raise serializers.ValidationError("Email not registered.")
+        return value
+    
+class VerifyOTPSerializer(serializers.Serializer):
+    user_email = serializers.EmailField()
+    otp = serializers.IntegerField()
+
+    def validate(self, data):
+        user = User.objects.filter(user_email=data['user_email']).first()
+        if not user:
+            raise serializers.ValidationError("Email not found.")
+        if user.otp != data['otp']:
+            raise serializers.ValidationError("Invalid OTP.")
+        return data
