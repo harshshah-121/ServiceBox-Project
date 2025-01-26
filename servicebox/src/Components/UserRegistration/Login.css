@@ -1,4 +1,7 @@
-/* Container for the login form */
+body{
+  overflow: hidden;
+}
+
 .login-container {
     max-width: 400px;
     margin: 40px auto;

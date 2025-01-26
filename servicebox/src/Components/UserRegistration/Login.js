@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,8 +36,16 @@ const Login = () => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      alert("Login Successful!");
-      console.log(formData);
+
+      // Check if email and password match the predefined credentials
+      if (formData.email === "user@gmail.com" && formData.password === "user123") {
+        alert("Login Successful!");
+        console.log(formData);
+        onLogin();
+        navigate("/home-page"); // Redirect to User Home page after successful login
+      } else {
+        alert("Invalid email or password!"); // Show error if credentials don't match
+      }
     }
   };
 

@@ -1,0 +1,98 @@
+.navbar {
+  background-color: #007bff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar li button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navbar li button:hover {
+  background-color: #0056b3;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.navbar li button:active {
+  transform: scale(1);
+}
+
+.navbar .logo {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar .logo:hover {
+  text-decoration: underline;
+}
+
+.welcome-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.feature-list {
+  list-style-type: disc;
+  padding-left: 40px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+      flex-direction: column;
+      gap: 8px;
+  }
+
+  .navbar li button {
+      font-size: 14px;
+      padding: 8px;
+  }
+}

@@ -31,7 +31,7 @@ function AdminLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      if (email === "Admin1@gmail.com" && password === "Admin123") {
+      if (email === "admin@gmail.com" && password === "admin123") {
         alert("Login Successful!");
         navigate("/admin-dashboard");
       } else {
