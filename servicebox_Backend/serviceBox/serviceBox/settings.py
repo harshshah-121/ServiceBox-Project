@@ -188,3 +188,10 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'servicebox987@gmail.com'
 EMAIL_HOST_PASSWORD = 'lmol vumj jhvz kcgb'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend URL
+    "http://127.0.0.1:3000",  # Alternative localhost
+]
+
+CORS_ALLOW_ALL_ORIGINS = True

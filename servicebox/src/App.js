@@ -13,7 +13,7 @@ const App = () => {
 
     const handleLogin = () => {
         setIsAuthenticated(true); // Set the user as logged in
-    };
+    };  
     return (
         <Router>
             <Routes>
