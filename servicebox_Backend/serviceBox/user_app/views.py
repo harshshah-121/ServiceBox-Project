@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegistrationSerializer,UserLoginSerializer,SendOTPSerializer, VerifyOTPSerializer
+from .serializers import UserRegistrationSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import User as usertable
@@ -68,3 +68,10 @@ class VerifyOTPView(APIView):
 
             return Response({"message": "Email verified successfully."}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class GetAllUsersView(APIView):
+    def get(self, request):
+        users = usertable.objects.all()  
+        serializer = UserSerializer(users, many=True)  
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -71,3 +71,21 @@ class VerifyOTPSerializer(serializers.Serializer):
         if user.otp != data['otp']:
             raise serializers.ValidationError("Invalid OTP.")
         return data
+    
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User  
+        fields = [
+            'user_id', 
+            'user_name', 
+            'user_email', 
+            'user_phone_number', 
+            'user_address', 
+            'user_date_of_birth', 
+            'user_registration_date', 
+            'user_age', 
+            'user_gender', 
+            'profile_pic', 
+            'email_verified', 
+        ] 
