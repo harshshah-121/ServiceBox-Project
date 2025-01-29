@@ -63,6 +63,7 @@ class SendOTPSerializer(serializers.Serializer):
 class VerifyOTPSerializer(serializers.Serializer):
     user_email = serializers.EmailField()
     otp = serializers.IntegerField()
+    reset_password = serializers.BooleanField(required=False, default=False)
 
     def validate(self, data):
         user = User.objects.filter(user_email=data['user_email']).first()
@@ -89,3 +90,8 @@ class UserSerializer(serializers.ModelSerializer):
             'profile_pic', 
             'email_verified', 
         ] 
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    user_email = serializers.EmailField()
+    new_password = serializers.CharField(write_only=True)
