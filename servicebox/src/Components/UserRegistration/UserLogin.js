@@ -19,7 +19,7 @@ const UserLogin = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
+  };  
 
   const validate = () => {
     const newErrors = {};

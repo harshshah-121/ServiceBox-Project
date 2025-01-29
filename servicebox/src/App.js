@@ -7,6 +7,8 @@ import ContactUs from "./Components/UserRegistration/HomePage/UserNavDetail/Cont
 import ProfileManagement from "./Components/UserRegistration/HomePage/UserNavDetail/ProfileManagement";
 import SelectService from "./Components/UserRegistration/HomePage/UserNavDetail/SelectService";
 import SearchService from "./Components/UserRegistration/HomePage/UserNavDetail/SearchService";
+import OtpRequest from "./Components/UserRegistration/HomePage/OtpRequest";
+import OtpVerify from "./Components/UserRegistration/HomePage/OtpVerify";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,6 +29,8 @@ const App = () => {
                 <Route path="/select-service" element={<SelectService />} />
                 <Route path="/profile-management" element={<ProfileManagement />} />
                 <Route path="/contact-us" element={<ContactUs />} />
+                <Route path="/otp-request" element={<OtpRequest/>}/>
+                <Route path="/otp-verify" element={<OtpVerify/>}/>
             </Routes>
         </Router>
     );
