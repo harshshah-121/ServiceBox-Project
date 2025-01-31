@@ -1,0 +1,63 @@
+.profile-title{
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: underline;
+  color: lightskyblue;
+  background-color: #0056b3;
+}
+
+.profile-management-container {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    /* max-width: 1000px; */
+  }
+  
+  .profile-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .profile-content {
+    width: 1000px;
+  }
+  
+  .profile-button {
+    display: inline-block;
+    width: 250px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .profile-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Special Styling for Delete & Logout Buttons */
+  .delete-account {
+    background-color: #dc3545;
+  }
+  
+  .delete-account:hover {
+    background-color: #b02a37;
+  }
+  
+  .logout {
+    background-color: #28a745;
+  }
+  
+  .logout:hover {
+    background-color: #1e7e34;
+  }
+  

@@ -1,82 +1,92 @@
-body{
+body {
   overflow: hidden;
 }
 
 .login-container {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Heading style */
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Form group wrapper */
-  .login-form .form-group {
-    margin-bottom: 15px;
-  }
-  
-  /* Label styles */
-  .login-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  /* Input field styles */
-  .login-form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  /* Button styles */
-  .login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  .login-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message styles */
-  .error {
-    color: #e74c3c;
-    font-size: 12px;
-    margin-top: 5px;
-  }
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
 
-  .error-message {
-    color: red;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-  
+/* Heading style */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group wrapper */
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styles */
+.login-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input field styles */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Button styles */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styles */
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Forgot password link */
+.forgot-password {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
