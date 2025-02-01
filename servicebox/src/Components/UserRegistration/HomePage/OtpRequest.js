@@ -22,15 +22,16 @@ const OtpRequest = () => {
     }
 
     setLoading(true);
-    setErrorMessage(""); 
-    setSuccessMessage(""); 
+    setErrorMessage("");
+    setSuccessMessage("");
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/user/send-otp/", { user_email: email });
       if (response.data.message) {
         setSuccessMessage(response.data.message);
         setTimeout(() => {
-          navigate("/otp-verify"); 
+          // 🔥 Add email and type=forgot as query parameters
+          navigate(`/otp-verify?type=forgot&email=${encodeURIComponent(email)}`);
         }, 2000);
       } else {
         setErrorMessage(response.data.error || "An error occurred while sending OTP.");
