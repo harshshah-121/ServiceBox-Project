@@ -45,17 +45,38 @@ const ResetPassword = () => {
     } else {
       setErrors({});
       setLoading(true);
+     
       try {
-        const response = await axios.post("http://127.0.0.1:8000/user/reset-password/", formData);
-        setMessage("Password reset successfully! You can now log in.");
-        setTimeout(() => navigate("/login"), 3000); // Redirect to login page after success
+        const response = await fetch("http://127.0.0.1:8000/user/send-otp/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_email: formData.user_email,
+            new_password: formData.new_password,
+          }),
+        });
+      
+        // Check if the response is JSON or not
+        let responseData;
+        console.log(responseData)
+        try {
+          responseData = await response.json();
+        } catch (error) {
+          throw new Error("Server did not return JSON. Check backend response.");
+        }
+      
+        if (response.ok) {
+          alert("Success: " + JSON.stringify(responseData));
+        } else {
+          alert("Error: " + JSON.stringify(responseData));
+        }
       } catch (error) {
-        console.error("Password reset error:", error);
-        setMessage(error.response?.data?.errors?.user_email || "Something went wrong!");
-      } finally {
-        setLoading(false);
+        console.error("Fetch error:", error);
+        alert("Something went wrong. Check console for details.");
       }
-    }
+    }      
   };
 
   return (
@@ -85,9 +106,7 @@ const ResetPassword = () => {
           />
           {errors.new_password && <small className="error">{errors.new_password}</small>}
         </div>
-        <button type="submit" className="reset-button" disabled={loading}>
-          {loading ? "Resetting..." : "Reset Password"}
-        </button>
+        <button type="submit" className="reset-button">ResetPassword</button>
       </form>
     </div>
   );
