@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./ResetPassword.css";
 
@@ -13,48 +13,39 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Handle input changes
+  useEffect(() => {
+    // Get email from URL and auto-fill input field
+    const searchParams = new URLSearchParams(location.search);
+    const email = searchParams.get("email");
+    if (email) {
+      setFormData((prev) => ({ ...prev, user_email: email }));
+    }
+  }, [location]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Validation function
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.user_email.trim()) {
-      newErrors.user_email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.user_email)) {
-      newErrors.user_email = "Invalid email format";
-    }
-    if (!formData.new_password.trim()) {
-      newErrors.new_password = "Password is required";
-    } else if (formData.new_password.length < 6) {
-      newErrors.new_password = "Password must be at least 6 characters long";
-    }
-    return newErrors;
-  };
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      setErrors({});
-      setLoading(true);
-      try {
-        const response = await axios.post("http://127.0.0.1:8000/user/reset-password/", formData);
-        setMessage("Password reset successfully! You can now log in.");
-        setTimeout(() => navigate("/login"), 3000); // Redirect to login page after success
-      } catch (error) {
-        console.error("Password reset error:", error);
-        setMessage(error.response?.data?.errors?.user_email || "Something went wrong!");
-      } finally {
-        setLoading(false);
-      }
+    if (!formData.new_password.trim()) {
+      setErrors({ new_password: "Password is required" });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await axios.post("http://127.0.0.1:8000/user/reset-password/", formData);
+      alert("Password reset successful! Redirecting to login...");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      setMessage("Error resetting password. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,10 +60,8 @@ const ResetPassword = () => {
             type="email"
             name="user_email"
             value={formData.user_email}
-            onChange={handleChange}
-            placeholder="Enter your email"
+            disabled // Email is auto-filled, user can't edit
           />
-          {errors.user_email && <small className="error">{errors.user_email}</small>}
         </div>
         <div className="form-group">
           <label>New Password</label>
@@ -82,8 +71,8 @@ const ResetPassword = () => {
             value={formData.new_password}
             onChange={handleChange}
             placeholder="Enter new password"
+            required
           />
-          {errors.new_password && <small className="error">{errors.new_password}</small>}
         </div>
         <button type="submit" className="reset-button" disabled={loading}>
           {loading ? "Resetting..." : "Reset Password"}

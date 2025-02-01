@@ -37,24 +37,34 @@ const Login = ({ onLogin }) => {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      setErrors({});
-      setLoading(true);
-      try {
-        const response = await axios.post("http://127.0.0.1:8000/user/user-login/", formData);
-        navigate("/home-page");
-      } catch (error) {
-        console.error("Error during login:", error);
-        if (error.response?.data?.errors?.non_field_errors[0] === "Email is not verified.") {
-          console.log("Email is not verified, redirecting to OTP request page...");
-          navigate("/otp-request");
-        }
-        setMessage(error.response?.data?.errors?.user_email || error.response?.data?.errors?.non_field_errors[0]);
-      } finally {
-        setLoading(false);
+      return;
+    }
+
+    setErrors({});
+    setLoading(true);
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/user/user-login/", formData);
+      navigate("/home-page"); // Redirect to home page after successful login
+    } catch (error) {
+      console.error("Error during login:", error);
+
+      // Check if the error message indicates email is not verified
+      if (error.response?.data?.errors?.non_field_errors?.[0] === "Email is not verified.") {
+        console.log("Email is not verified, redirecting to OTP verification page...");
+        navigate("/otp-request?type=register"); // Redirect to OTP verification for registration
       }
+
+      setMessage(
+        error.response?.data?.errors?.user_email ||
+        error.response?.data?.errors?.non_field_errors?.[0] ||
+        "Login failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
+
 
   return (
     <div className="login-container">
@@ -84,8 +94,11 @@ const Login = ({ onLogin }) => {
           {errors.user_password && <small className="error">{errors.user_password}</small>}
         </div>
         <div className="forgot-password">
-          <a href="/forgot-password">Forgot Password?</a>
+          <span onClick={() => navigate("/otp-request?type=forgot")} className="clickable-text">
+            Forgot Password?
+          </span>
         </div>
+
         <button type="submit" className="login-button" disabled={loading}>
           {loading ? "Logging in..." : "Log In"}
         </button>
