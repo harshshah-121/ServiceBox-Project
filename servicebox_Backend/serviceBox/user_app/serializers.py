@@ -95,3 +95,18 @@ class UserSerializer(serializers.ModelSerializer):
 class ResetPasswordSerializer(serializers.Serializer):
     user_email = serializers.EmailField()
     new_password = serializers.CharField(write_only=True)
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['user_name','user_email', 'user_phone_number', 'user_address', 'user_gender', 'user_age']
+
+    def update(self, instance, validated_data):
+        instance.user_name = validated_data.get('user_name', instance.user_name)
+        instance.user_phone_number = validated_data.get('user_phone_number', instance.user_phone_number)  
+        instance.user_address = validated_data.get('user_address', instance.user_address)  
+        instance.user_gender = validated_data.get('user_gender', instance.user_gender)  
+        instance.user_age = validated_data.get('user_age', instance.user_age)  
+        instance.save()
+        return instance

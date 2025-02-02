@@ -85,6 +85,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'serviceBox.wsgi.application'
 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Your React frontend URL
+]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
