@@ -8,6 +8,7 @@ from django.conf import settings
 from .models import User
 from django.contrib.auth.hashers import make_password
 from django.middleware.csrf import get_token
+from django.contrib.auth import logout
 
 class UserRegistrationView(APIView):
     def post(self, request):
@@ -118,6 +119,11 @@ class GetAllUsersView(APIView):
 class CSRFTokenView(APIView):
     def get(self, request):
         return Response({"csrf_token": get_token(request)})
+
+class UserLogoutView(APIView):
+    def post(self, request):
+        logout(request)  
+        return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
     
 class UserProfileView(APIView):
     def get(self, request):
