@@ -2,12 +2,34 @@ import React from 'react';
 import { FaUserEdit, FaLock, FaHistory, FaComment, FaStar, FaTrash, FaSignOutAlt } from 'react-icons/fa';
 import { MdManageAccounts } from 'react-icons/md';
 import './ProfileManagement.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const ProfileManagement = ({children}) => {
+  const navigate=useNavigate();
   // Function to handle logout
-  const handleLogout = () => {
-    alert("You have been logged out.");
-    // You can also clear user session data here
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/user/user-logout/", {
+        method: "POST", // Assuming it's a POST request, you can change if needed
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // If you are using cookies for sessions
+      });
+
+      const result=await response.json();
+  
+      if (!response.ok) {
+        alert("You have been logged out.");
+        // Redirect to login page
+        navigate("./login.js");
+      } else {
+        alert("Logout failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   // Function to handle account deletion
