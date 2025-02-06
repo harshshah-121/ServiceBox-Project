@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './EditProfile.css';
+import axios from 'axios';
+import { data } from 'react-router-dom';
+// import { Toast } from 'bootstrap';
+import {useNavigate} from "react-router-dom"
 
 const EditProfile = () => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    email: 'user@example.com', // Pre-filled email
-    phoneNumber: '',
-    address: '',
-    gender: '',
-    age: '',
-    profilePic: null,
-    profilePicPreview: '',
+    user_name: '',
+    // user_email: '',
+    user_phone_number: '',
+    user_address: '',
+    user_gender: '',
+    user_age: '',
+    // profilePic: null,
+    // profilePicPreview: '',
   });
 
   const [errors, setErrors] = useState({
-    username: '',
-    phoneNumber: '',
-    age: '',
+    user_name: '',
+    user_phone_number: '',
+    user_age: '',
     profilePic: '',
   });
 
@@ -26,13 +31,13 @@ const EditProfile = () => {
     let errorMessage = '';
 
     // Validation logic
-    if (name === 'username' && value.trim() === '') {
+    if (name === 'user_name' && value.trim() === '') {
       errorMessage = 'Username is required';
     }
-    if (name === 'phoneNumber' && !/^\d{10}$/.test(value)) {
+    if (name === 'user_phone_number' && !/^\d{10}$/.test(value)) {
       errorMessage = 'Phone number must be exactly 10 digits';
     }
-    if (name === 'age' && (!/^\d+$/.test(value) || value < 1 || value > 120)) {
+    if (name === 'user_age' && (!/^\d+$/.test(value) || value < 1 || value > 120)) {
       errorMessage = 'Age must be between 1 and 120';
     }
 
@@ -61,21 +66,29 @@ const EditProfile = () => {
     setErrors((prev) => ({ ...prev, profilePic: '' }));
   };
 
+  useEffect(() => {
+    axios.get("user/user-profile/", { withCredentials: true })  // Ensure session cookies are sent
+      .then(response => {
+        setFormData(response.data);
+      })
+      .catch(error => navigate("/login"));
+  }, []);
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    // alert("okkk")
     e.preventDefault();
 
     // Final validation check
-    if (!formData.username.trim()) {
-      setErrors((prev) => ({ ...prev, username: 'Username is required' }));
+    if (!formData.user_name.trim()) {
+      setErrors((prev) => ({ ...prev, user_name: 'Username is required' }));
       return;
     }
-    if (!/^\d{10}$/.test(formData.phoneNumber)) {
-      setErrors((prev) => ({ ...prev, phoneNumber: 'Phone number must be exactly 10 digits' }));
+    if (!/^\d{10}$/.test(formData.user_phone_number)) {
+      setErrors((prev) => ({ ...prev, user_phone_number: 'Phone number must be exactly 10 digits' }));
       return;
     }
-    if (!/^\d+$/.test(formData.age) || formData.age < 1 || formData.age > 120) {
-      setErrors((prev) => ({ ...prev, age: 'Age must be between 1 and 120' }));
+    if (!/^\d+$/.test(formData.user_age) || formData.user_age < 1 || formData.user_age > 120) {
+      setErrors((prev) => ({ ...prev, user_age: 'Age must be between 1 and 120' }));
       return;
     }
     if (!formData.profilePic) {
@@ -83,35 +96,66 @@ const EditProfile = () => {
       return;
     }
 
-    alert('Profile updated successfully!');
+    try {
+      const respose = await fetch("http://127.0.0.1:8000/user/user-profile/", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user_name: formData.user_name,
+          user_phone_number: formData.user_phone_number,
+          user_address: formData.user_address,
+          user_gender: formData.user_gender,
+          user_age: formData.user_age,
+        }),
+      })
+      const result = await respose.json();
+
+      // alert(result)
+      if (!respose.ok) {
+        throw new Error(result.errorMessage);
+      }
+      if (respose.ok) {
+        alert("Profile Updates Successfully!");
+
+      }
+    } catch (error) {
+      console.log("Error Updating Profile:", error);
+    }
+
+
+
+    // alert('Profile updated successfully!');
     // Add API call to update user profile in the backend
+
   };
 
   return (
     <div className="edit-profile-container">
       <h2>Edit Profile</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* Username */}
         <label>Username:</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} required />
-        {errors.username && <p className="error">{errors.username}</p>}
+        <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} required />
+        {errors.user_name && <p className="error">{errors.user_name}</p>}
 
         {/* Email (Disabled) */}
         <label>Email:</label>
-        <input type="email" name="email" value={formData.email} disabled />
-
+        <input type="email" name="user_email" value={formData.user_email} disabled />
+        
         {/* Phone Number */}
         <label>Phone No:</label>
-        <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
-        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+        <input type="tel" name="user_phone_number" value={formData.user_phone_number} onChange={handleChange} required />
+        {errors.user_phone_number && <p className="error">{errors.user_phone_number}</p>}
 
         {/* Address */}
         <label>Address:</label>
-        <textarea name="address" value={formData.address} onChange={handleChange} required></textarea>
+        <textarea name="user_address" value={formData.user_address} onChange={handleChange} required></textarea>
 
         {/* Gender Selection */}
         <label>Gender:</label>
-        <select name="gender" value={formData.gender} onChange={handleChange} required>
+        <select name="user_gender" value={formData.user_gender} onChange={handleChange} required>
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -120,8 +164,8 @@ const EditProfile = () => {
 
         {/* Age */}
         <label>Age:</label>
-        <input type="number" name="age" value={formData.age} onChange={handleChange} required />
-        {errors.age && <p className="error">{errors.age}</p>}
+        <input type="number" name="user_age" value={formData.user_age} onChange={handleChange} required />
+        {errors.user_age && <p className="error">{errors.user_age}</p>}
 
         {/* Profile Picture Upload */}
         <label>Profile Pic:</label>
@@ -130,7 +174,7 @@ const EditProfile = () => {
         {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />}
 
         {/* Submit Button */}
-        <button type="submit" className="save-button">Save Changes</button>
+        <button type="submit" onClick={handleSubmit} className="save-button">Save Changes</button>
       </form>
     </div>
   );

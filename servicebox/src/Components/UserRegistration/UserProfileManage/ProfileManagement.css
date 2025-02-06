@@ -1,77 +1,80 @@
-/* Full-page container */
 .profile-management-container {
   display: flex;
   height: 100vh;
-  width: 100vw;
-  background-color: #f5f5f5;
 }
 
-/* Sidebar for profile options */
 .profile-options {
-  width: 250px;
-  background-color: #fff;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  background-color: #f8f9fa;
+  position: relative;
 }
 
-/* Profile buttons */
 .profile-button {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
-  padding: 12px;
+  color: #333;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
   font-size: 16px;
   font-weight: bold;
-  color: #333;
-  background: #fff;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.profile-button .icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.profile-button:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateX(5px);
+  box-shadow: 3px 3px 10px rgba(0, 123, 255, 0.3);
+}
+
+.profile-button.logout:hover {
+  background-color: #dc3545 !important;
+  color: #222 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.logout {
+  position: absolute;
+  bottom: 39px;
+  width: calc(100% - 5%);
+  background-color: #dc3545;
+  color: white;
   cursor: pointer;
 }
 
-/* Hover effect with gradient and scale */
-.profile-button:hover {
-  background: linear-gradient(135deg, #027892, #027892);
-  color: #fff;
-  transform: scale(1.05);
-  border-color: #027892;
+.logout:focus,
+.profile-button:focus {
+  outline: none;
+  box-shadow: none;
 }
 
-/* Icons inside buttons */
-.icon {
-  font-size: 20px;
-}
-
-/* Profile content area */
-.profile-content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-/* Logout button at the bottom */
-.logout {
-  margin-top: 180px;
-  background: #027892;
-  color: white;
-}
-
-.logout:hover {
-  background: #de0012;
-  border-color: #de0012;
-}
-
-/* Delete account button */
 .delete-account {
-  background: #fff;
+  background-color: #ffc107;
+  color: black;
 }
 
 .delete-account:hover {
-  background: #de0012;
-  border-color: #de0012;
+  background-color: #e0a800;
+  transform: translateX(5px);
+  box-shadow: 3px 3px 10px rgba(255, 193, 7, 0.3);
+}
+
+.profile-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
 }
