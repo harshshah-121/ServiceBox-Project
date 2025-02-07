@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegistrationSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
+from .serializers import UserRegistrationSerializer,ChangePasswordSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import User
@@ -149,5 +149,15 @@ class UserProfileView(APIView):
                 "message": "Profile updated successfully",
                 "data": serializer.data
             }, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class ChangePasswordView(APIView):
+    def post(self, request):
+        serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Password changed successfully."}, status=status.HTTP_200_OK)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
