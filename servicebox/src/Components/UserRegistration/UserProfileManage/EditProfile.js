@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import './EditProfile.css';
 import axios from 'axios';
+import Cookies from "js-cookie"
 import { data } from 'react-router-dom';
 import { Toast } from 'bootstrap';
 
 const EditProfile = () => {
-  const [formData, setFormData] = useState({
-    user_name: '',
-    user_email: '',
-    user_phone_number: '',
-    user_address: '',
-    user_gender: '',
-    user_age: '',
-    profilePic: null,
-    profilePicPreview: '',
-  });
+  // const [formData, setFormData] = useState({
+  //   user_name: '',
+  //   user_email: '',
+  //   user_phone_number: '',
+  //   user_address: '',
+  //   user_gender: '',
+  //   user_age: '',
+  //   profilePic: null,
+  //   profilePicPreview: '',
+  // });
+  let parsedUserDetails = {};
 
   const [errors, setErrors] = useState({
     user_name: '',
@@ -43,26 +45,53 @@ const EditProfile = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle profile picture upload
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && !file.type.startsWith('image/')) {
-      setErrors((prev) => ({ ...prev, profilePic: 'Only image files are allowed' }));
-      return;
+  const userDetails = Cookies.get("UserDetails");
+
+if (userDetails) {
+    try {
+        parsedUserDetails = JSON.parse(decodeURIComponent(userDetails)); // Decode it before parsing
+        console.log("User Details after retrieving:", parsedUserDetails);
+    } catch (error) {
+        console.error("Error parsing cookie data:", error);
     }
+} else {
+    console.log("No user details found in cookies.");
+}
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setFormData((prev) => ({
-        ...prev,
-        profilePic: file,
-        profilePicPreview: reader.result,
-      }));
-    };
-    reader.readAsDataURL(file);
+const [formData, setFormData] = useState({
+  user_id: parsedUserDetails?.user_id,
+  user_name: parsedUserDetails?.user_name || '',
+  user_email: parsedUserDetails?.user_email || '',
+  user_phone_number: parsedUserDetails?.user_phone_number || '',
+  user_address: parsedUserDetails?.user_address || '',
+  user_gender: parsedUserDetails?.user_gender || '',
+  user_age: parsedUserDetails?.user_age || ''
+  // profilePic: null,
+  // profilePicPreview: '',
+});
 
-    setErrors((prev) => ({ ...prev, profilePic: '' }));
-  };
+  // Handle profile picture upload
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file && !file.type.startsWith('image/')) {
+  //     setErrors((prev) => ({ ...prev, profilePic: 'Only image files are allowed' }));
+  //     return;
+  //   }
+
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       profilePic: file,
+  //       profilePicPreview: reader.result,
+  //     }));
+  //   };
+  //   reader.readAsDataURL(file);
+
+  //   setErrors((prev) => ({ ...prev, profilePic: '' }));
+  // };
+
+  console.log(parsedUserDetails?.user_id)
 
 
   // Handle form submission
@@ -83,10 +112,10 @@ const EditProfile = () => {
       setErrors((prev) => ({ ...prev, user_age: 'Age must be between 1 and 120' }));
       return;
     }
-    if (!formData.profilePic) {
-      setErrors((prev) => ({ ...prev, profilePic: 'Profile picture is required' }));
-      return;
-    }
+    // if (!formData.profilePic) {
+    //   setErrors((prev) => ({ ...prev, profilePic: 'Profile picture is required' }));
+    //   return;
+    // }
 
     try {
       const respose = await fetch("http://127.0.0.1:8000/user/user-profile/", {
@@ -95,6 +124,7 @@ const EditProfile = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
+          user_id: formData.user_id,
           user_name: formData.user_name,
           user_phone_number: formData.user_phone_number,
           user_address: formData.user_address,
@@ -102,6 +132,7 @@ const EditProfile = () => {
           user_age: formData.user_age,
         }),
       })
+      console.log(formData)
       const result = await respose.json();
 
       // alert(result)
@@ -160,10 +191,10 @@ const EditProfile = () => {
         {errors.user_age && <p className="error">{errors.user_age}</p>}
 
         {/* Profile Picture Upload */}
-        <label>Profile Pic:</label>
+        {/* <label>Profile Pic:</label>
         <input type="file" accept="image/*" onChange={handleFileChange} />
         {errors.profilePic && <p className="error">{errors.profilePic}</p>}
-        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />}
+        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />} */}
 
         {/* Submit Button */}
         <button type="submit" onClick={handleSubmit} className="save-button">Save Changes</button>

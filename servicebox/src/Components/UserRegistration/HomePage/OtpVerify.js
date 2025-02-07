@@ -10,18 +10,15 @@ const OtpVerify = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Extract parameters from URL
   const searchParams = new URLSearchParams(location.search);
-  const type = searchParams.get("type"); // "forgot" or "register"
-  const email = searchParams.get("email"); // Extract email from URL
+  const email = searchParams.get("email");
 
   useEffect(() => {
     if (!email) {
       setErrorMessage("Email is missing. Please request OTP again.");
-    } else {
-      console.log("Email extracted:", email); // Check if email is correctly extracted
     }
   }, [email]);
+
   const handleOtpChange = (e) => {
     setOtp(e.target.value);
   };
@@ -43,13 +40,8 @@ const OtpVerify = () => {
       });
 
       console.log("OTP Verification Successful:", response.data);
-
-      // Redirect based on `type`
-      if (type === "forgot") {
-        navigate(`/reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password
-      } else {
-        navigate("/login"); // Default: Redirect to Login if it's for registration
-      }
+      alert("OTP verified successfully! Please reset your password.");
+      navigate(`/reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password
     } catch (error) {
       console.error("Error verifying OTP:", error);
       setErrorMessage("Invalid OTP. Please try again.");
@@ -65,14 +57,7 @@ const OtpVerify = () => {
       <form onSubmit={handleSubmit} className="otp-verify-form">
         <div className="form-group">
           <label>OTP:</label>
-          <input
-            type="text"
-            name="otp"
-            value={otp}
-            onChange={handleOtpChange}
-            placeholder="Enter OTP"
-            required
-          />
+          <input type="text" name="otp" value={otp} onChange={handleOtpChange} placeholder="Enter OTP" required />
         </div>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
         <button type="submit" className="submit-button">Verify</button>

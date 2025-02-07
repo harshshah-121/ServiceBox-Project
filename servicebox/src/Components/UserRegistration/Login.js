@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"
 import "./Login.css";
 import axios from "axios";
 
@@ -45,6 +46,35 @@ const Login = ({ onLogin }) => {
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/user/user-login/", formData);
+      console.log(response?.data?.data)
+      const twoHoursLater = new Date();
+    twoHoursLater.setTime(twoHoursLater.getTime() + (2 * 60 * 60 * 1000)); // 2 hours in milliseconds
+
+    // Store user details as a JSON string
+    // Cookies.set("UserDetails", JSON.stringify({
+    //   "user_id":response?.data?.data?.user_id,
+    //   "user_email":response?.data?.data?.user_email,
+    //   "user_password":response?.data?.data?.user_password
+    // }), {
+    //     expires: twoHoursLater,  // Expires in 2 hours
+    // });
+
+    const userData = {
+      user_id: response?.data?.data?.user_id,
+      user_email: response?.data?.data?.user_email,
+      user_password: response?.data?.data?.user_password
+  };
+
+  console.log("UserData before storing in Cookie:", userData);
+
+  // Store in cookies with proper expiration
+  Cookies.set("UserDetails", JSON.stringify(userData), {
+      expires: new Date(new Date().getTime() + 2 * 60 * 60 * 1000), // 2 hours
+      secure: true,  // Ensures it's only sent over HTTPS
+      sameSite: "Strict",  // Prevents CSRF attacks
+      path: "/"  // Available to all pages
+  });
+
       navigate("/home-page"); // Redirect to home page after successful login
     } catch (error) {
       console.error("Error during login:", error);
