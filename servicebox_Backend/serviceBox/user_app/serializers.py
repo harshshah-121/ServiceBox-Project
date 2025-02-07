@@ -110,3 +110,36 @@ class UserProfileSerializer(serializers.ModelSerializer):
         instance.user_age = validated_data.get('user_age', instance.user_age)  
         instance.save()
         return instance
+    
+class ChangePasswordSerializer(serializers.Serializer):
+    current_password = serializers.CharField(write_only=True)
+    new_password = serializers.CharField(write_only=True)
+    confirm_password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        request = self.context.get('request')  
+        user_id = request.session.get('user_id')  
+
+        if not user_id:
+            raise serializers.ValidationError({"error": "User is not authenticated."})
+
+        try:
+            user = User.objects.get(user_id=user_id)
+        except User.DoesNotExist:
+            raise serializers.ValidationError({"error": "User not found."})
+
+        if not check_password(data['current_password'], user.user_password):
+            raise serializers.ValidationError({"error": "Current password is incorrect."})
+
+        if data['new_password'] != data['confirm_password']:
+            raise serializers.ValidationError({"error": "New password and confirm password do not match."})
+
+        return data
+
+    def save(self, **kwargs):
+        request = self.context.get('request')
+        user_id = request.session.get('user_id')
+
+        user = User.objects.get(user_id=user_id)
+        user.user_password = make_password(self.validated_data['new_password']) 
+        user.save()
