@@ -91,38 +91,46 @@ const EditProfile = () => {
       setErrors((prev) => ({ ...prev, user_age: 'Age must be between 1 and 120' }));
       return;
     }
-    if (!formData.profilePic) {
-      setErrors((prev) => ({ ...prev, profilePic: 'Profile picture is required' }));
-      return;
-    }
+    // if (!formData.profilePic) {
+    //   setErrors((prev) => ({ ...prev, profilePic: 'Profile picture is required' }));
+    //   return;
+    // }
 
-    try {
-      const respose = await fetch("http://127.0.0.1:8000/user/user-profile/", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          user_name: formData.user_name,
-          user_phone_number: formData.user_phone_number,
-          user_address: formData.user_address,
-          user_gender: formData.user_gender,
-          user_age: formData.user_age,
-        }),
-      })
-      const result = await respose.json();
+    // try {
+    //   const respose = await fetch("user/user-profile/", {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       user_name: formData.user_name,
+    //       user_phone_number: formData.user_phone_number,
+    //       user_address: formData.user_address,
+    //       user_gender: formData.user_gender,
+    //       user_age: formData.user_age,
+    //     }),
+    //   })
+    //   const result = await respose.json();
 
-      // alert(result)
-      if (!respose.ok) {
-        throw new Error(result.errorMessage);
-      }
-      if (respose.ok) {
-        alert("Profile Updates Successfully!");
+    //   // alert(result)
+    //   if (!respose.ok) {
+    //     throw new Error(result.errorMessage);
+    //   }
+    //   if (respose.ok) {
+    //     alert("Profile Updates Successfully!");
 
-      }
-    } catch (error) {
-      console.log("Error Updating Profile:", error);
-    }
+    //   }
+    // } catch (error) {
+    //   console.log("Error Updating Profile:", error);
+    // }
+    axios.put("user/user-profile/", formData, {
+      withCredentials: true, 
+    })
+    .then(response => {
+      alert("Profile updated successfully!");
+      setFormData(response.data.data);
+    })
+    .catch(error => console.error("Profile update error:", error));
 
 
 

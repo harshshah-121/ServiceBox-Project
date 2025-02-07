@@ -10,7 +10,7 @@ const ProfileManagement = ({ children }) => {
   // Function to handle logout
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/user/user-logout/", {
+      const response = await fetch("user/user-logout/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
