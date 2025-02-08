@@ -1,20 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-class ServiceProviderManager(BaseUserManager):
-    def create_user(self, email, firstname, lastname, password=None):
-        if not email:
-            raise ValueError("Email is required")
-        user = self.model(email=self.normalize_email(email), firstname=firstname, lastname=lastname)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+# class ServiceProviderManager(BaseUserManager):
+#     def create_user(self, email, firstname, lastname, password=None):
+#         if not email:
+#             raise ValueError("Email is required")
+#         user = self.model(email=self.normalize_email(email), firstname=firstname, lastname=lastname)
+#         user.set_password(password)
+#         user.save(using=self._db)
+#         return user
 
-    def create_superuser(self, email, firstname, lastname, password=None):
-        user = self.create_user(email, firstname, lastname, password)
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
+#     def create_superuser(self, email, firstname, lastname, password=None):
+#         user = self.create_user(email, firstname, lastname, password)
+#         user.is_admin = True
+#         user.save(using=self._db)
+#         return user
 
 # Service Provider Model
 class ServiceProvider(AbstractBaseUser):
@@ -33,10 +33,10 @@ class ServiceProvider(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['firstname', 'lastname']
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['firstname', 'lastname']
 
-    objects = ServiceProviderManager()
+    # objects = ServiceProviderManager()
 
-    def __str__(self):
-        return self.email
+    # def __str__(self):
+    #     return self.email
