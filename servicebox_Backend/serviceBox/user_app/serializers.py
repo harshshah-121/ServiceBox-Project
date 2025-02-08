@@ -143,3 +143,11 @@ class ChangePasswordSerializer(serializers.Serializer):
         user = User.objects.get(user_id=user_id)
         user.user_password = make_password(self.validated_data['new_password']) 
         user.save()
+
+class DeleteAccountSerializer(serializers.Serializer):
+    confirm = serializers.BooleanField()
+
+    def validate_confirm(self, value):
+        if value is not True:
+            raise serializers.ValidationError("You must confirm account deletion.")
+        return value
