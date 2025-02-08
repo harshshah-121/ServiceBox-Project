@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('admin_app.urls')),
     path('user/',include('user_app.urls')),
+    path('service_provider/',include('Ser_provider.urls')),
     # path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
