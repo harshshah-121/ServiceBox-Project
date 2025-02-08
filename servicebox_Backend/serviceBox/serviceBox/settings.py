@@ -194,6 +194,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'servicebox987@gmail.com'
 EMAIL_HOST_PASSWORD = 'lmol vumj jhvz kcgb'
 
+
+ADMIN_EMAIL = 'yashsolanki9265@gmail.com'
+
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000",  # Frontend URL
 #     "http://127.0.0.1:3000",  # Alternative localhost
