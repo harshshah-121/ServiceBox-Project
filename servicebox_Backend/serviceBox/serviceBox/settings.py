@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'admin_app',
     'rest_framework_simplejwt',
     'user_app',
+    'Ser_provider',
 ]
 
 MIDDLEWARE = [
