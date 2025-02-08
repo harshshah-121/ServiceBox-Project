@@ -16,7 +16,6 @@ const ResetPassword = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Get email from URL and auto-fill input field
     const searchParams = new URLSearchParams(location.search);
     const email = searchParams.get("email");
     if (email) {
@@ -56,27 +55,13 @@ const ResetPassword = () => {
       <form onSubmit={handleSubmit} className="reset-form">
         <div className="form-group">
           <label>Email Address</label>
-          <input
-            type="email"
-            name="user_email"
-            value={formData.user_email}
-            disabled // Email is auto-filled, user can't edit
-          />
+          <input type="email" name="user_email" value={formData.user_email} disabled />
         </div>
         <div className="form-group">
           <label>New Password</label>
-          <input
-            type="password"
-            name="new_password"
-            value={formData.new_password}
-            onChange={handleChange}
-            placeholder="Enter new password"
-            required
-          />
+          <input type="password" name="new_password" value={formData.new_password} onChange={handleChange} placeholder="Enter new password" required />
         </div>
-        <button type="submit" className="reset-button" disabled={loading}>
-          {loading ? "Resetting..." : "Reset Password"}
-        </button>
+        <button type="submit" className="reset-button" disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
       </form>
     </div>
   );

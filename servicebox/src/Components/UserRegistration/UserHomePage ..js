@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './UserHomePage .css'; // Make sure the CSS file name is correct (no extra space)
+import './UserHomePage .css';
 
-const UserHomepage = ({children}) => {
+const UserHomePage = ({ children }) => {
   return (
     <div className="user-homepage">
       <nav className="navbar">
@@ -32,4 +32,4 @@ const UserHomepage = ({children}) => {
   );
 };
 
-export default UserHomepage;
+export default UserHomePage;
