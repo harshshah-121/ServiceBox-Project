@@ -32,7 +32,9 @@ class ServiceProvider(AbstractBaseUser):
     profile_pic=models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    
+    class meta:
+        db_table='serviceProvider'
     # USERNAME_FIELD = 'email'
     # REQUIRED_FIELDS = ['firstname', 'lastname']
 
