@@ -5,6 +5,7 @@ import UserHomePage from "./Components/UserRegistration/UserHomePage .";
 import Login from "./Components/UserRegistration/Login";
 import ResetPassword from "./Components/UserRegistration/ResetPassword";
 import SelectService from "./Components/UserRegistration/HomePage/UserNavDetail/SelectService";
+import ContactUs from "./Components/UserRegistration/HomePage/UserNavDetail/ContactUs";
 import OtpRequest from "./Components/UserRegistration/HomePage/OtpRequest";
 import OtpVerify from "./Components/UserRegistration/HomePage/OtpVerify";
 import ProfileManagement from "./Components/UserRegistration/UserProfileManage/ProfileManagement";
@@ -30,6 +31,7 @@ const App = () => {
                 {<Route path="/forgot-password" element={<ResetPassword />} />}
                 <Route path="/home-page" element={<UserHomePage><UserHomePageContent /></UserHomePage>} />
                 <Route path="/services" element={<UserHomePage><SelectService /></UserHomePage>} />
+                <Route path="/contact-us" element={<UserHomePage><ContactUs /></UserHomePage>} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 { <Route path="/profile-management" element={<ProfileManagement />} /> }
                 {<Route path="/otp-request" element={<OtpRequest/>}/> }
