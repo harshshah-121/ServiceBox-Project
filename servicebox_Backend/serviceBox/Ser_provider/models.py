@@ -35,10 +35,10 @@ class ServiceProvider(AbstractBaseUser):
     
     class meta:
         db_table='serviceProvider'
-    # USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['firstname', 'lastname']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['firstname', 'lastname']
 
-    # objects = ServiceProviderManager()
+    objects = ServiceProviderManager()
 
-    # def __str__(self):
-    #     return self.email
+    def __str__(self):
+        return self.email
