@@ -12,33 +12,10 @@ const Service = () => {
     status: "",
   });
 
-  const [errors, setErrors] = useState({});
-
-  const validateForm = () => {
-    const errors = {};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const aadharRegex = /^\d{12}$/;
-
-    if (!formData.name.trim()) errors.name = "Name is required";
-    if (!emailRegex.test(formData.email)) errors.email = "Invalid email format";
-    if (!formData.address.trim()) errors.address = "Address is required";
-    if (formData.password.length < 6)
-      errors.password = "Password must be at least 6 characters long";
-    if (!aadharRegex.test(formData.aadharNo))
-      errors.aadharNo = "Aadhar number must be 12 digits";
-    if (!formData.gender) errors.gender = "Gender is required";
-    if (!formData.status) errors.status = "Status is required";
-
-    setErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("Form submitted successfully!");
-      console.log("Form Data:", formData);
-    }
+    alert("Form submitted successfully!");
+    console.log("Form Data:", formData);
   };
 
   const handleChange = (e) => {
@@ -57,8 +34,8 @@ const Service = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            required
           />
-          {errors.name && <p className="error">{errors.name}</p>}
         </label>
 
         <label>
@@ -68,8 +45,8 @@ const Service = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
-          {errors.email && <p className="error">{errors.email}</p>}
         </label>
 
         <label>
@@ -78,8 +55,8 @@ const Service = () => {
             name="address"
             value={formData.address}
             onChange={handleChange}
+            required
           />
-          {errors.address && <p className="error">{errors.address}</p>}
         </label>
 
         <label>
@@ -89,8 +66,8 @@ const Service = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
-          {errors.password && <p className="error">{errors.password}</p>}
         </label>
 
         <label>
@@ -100,29 +77,27 @@ const Service = () => {
             name="aadharNo"
             value={formData.aadharNo}
             onChange={handleChange}
+            required
           />
-          {errors.aadharNo && <p className="error">{errors.aadharNo}</p>}
         </label>
 
         <label>
           Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange}>
+          <select name="gender" value={formData.gender} onChange={handleChange} required>
             <option value="">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
-          {errors.gender && <p className="error">{errors.gender}</p>}
         </label>
 
         <label>
           Status:
-          <select name="status" value={formData.status} onChange={handleChange}>
+          <select name="status" value={formData.status} onChange={handleChange} required>
             <option value="">Select</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
-          {errors.status && <p className="error">{errors.status}</p>}
         </label>
 
         <button type="submit">Submit</button>

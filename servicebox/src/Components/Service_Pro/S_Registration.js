@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./S_Registration.css";
+import axios from "axios";
 
 const S_Registration = () => {
   const [formData, setFormData] = useState({
@@ -30,11 +31,26 @@ const S_Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("Registration successful!");
-      console.log("Form Data:", formData);
-      // You can proceed to submit the data to the server here
+    
+    if (!validateForm()) {
+      return; 
     }
+  
+    axios.post("service_provider/register/", formData, {
+        headers: { "Content-Type": "application/json" },  
+        withCredentials: true, 
+      })
+      .then(response => {
+        alert("Registration Successful!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "", 
+          confirmPassword: "",
+        });
+      })
+      .catch(error => console.log("Registration error:", error));
   };
 
   const handleChange = (e) => {
@@ -101,7 +117,7 @@ const S_Registration = () => {
           {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
         </label>
 
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );
