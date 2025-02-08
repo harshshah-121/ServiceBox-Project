@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegistrationSerializer,DeleteAccountSerializer,ChangePasswordSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
+from .serializers import UserRegistrationSerializer,ContactUsSerializer,DeleteAccountSerializer,ChangePasswordSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import User
@@ -181,4 +181,26 @@ class DeleteAccountView(APIView):
             except User.DoesNotExist:
                 return Response({"error": "User not found."}, status=status.HTTP_404_NOT_FOUND)
 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ContactUsView(APIView):
+    def post(self, request):
+        serializer = ContactUsSerializer(data=request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            
+            subject = f"New Contact Us Message from {data['full_name']}"
+            message = f"""
+            Full Name: {data['full_name']}
+            Email: {data['email']}
+            Phone Number: {data['phone_number']}
+            
+            Message:
+            {data['message']}
+            """
+            admin_email = settings.ADMIN_EMAIL 
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [admin_email], fail_silently=False)
+
+            return Response({"message": "Your message has been sent successfully!"}, status=status.HTTP_200_OK)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

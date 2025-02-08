@@ -151,3 +151,16 @@ class DeleteAccountSerializer(serializers.Serializer):
         if value is not True:
             raise serializers.ValidationError("You must confirm account deletion.")
         return value
+    
+
+
+class ContactUsSerializer(serializers.Serializer):
+    full_name = serializers.CharField(max_length=30)
+    email = serializers.EmailField()
+    phone_number = serializers.CharField(max_length=15)
+    message = serializers.CharField(max_length=500)
+
+    def validate_phone_number(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError("Phone number must contain only digits.")
+        return value
