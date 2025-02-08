@@ -12,7 +12,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = ['user_name', 'user_email', 'user_password']
         extra_kwargs = {
-            'user_password': {'write_only': True}  
+            'user_password': {'write_only': True}   
         }
 
     def create(self, validated_data):
