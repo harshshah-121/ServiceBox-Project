@@ -33,14 +33,11 @@ const ChangePassword = () => {
         }
       });
 
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.message||"Failed To Update");
-      } 
+      
       alert("Password updated successfully!");
     } catch (error) {
       console.log("Error: Unable to connect to the server.",error);
-    }
+    }
   };
 
   return (
