@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ChangePassword.css';
-import { Toast } from 'bootstrap';
 import axios from 'axios';
 
 
@@ -34,9 +33,9 @@ const ChangePassword = () => {
       });
 
       
-      alert("Password updated successfully!");
+      alert(response.data.message);
     } catch (error) {
-      console.log("Error: Unable to connect to the server.",error);
+      alert(error.response.data.error);
     }
   };
 
