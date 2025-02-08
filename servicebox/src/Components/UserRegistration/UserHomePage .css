@@ -14,49 +14,58 @@ body {
 
 /* Navbar styles */
 .navbar {
-  position: sticky;
-  top: 0;
-  left: 0;
-  background-color: #333;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
+  height: 70px;
+  padding: 0 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-logo img {
-  width: 100px; 
-  height: auto;
+  height: 60px;
+  margin-bottom: 13px;
 }
 
 .nav-links {
-  list-style-type: none;
+  list-style: none;
+  display: flex;
+  gap: 60px; /* Increased gap between nav items */
   margin: 0;
   padding: 0;
-  display: flex;
-  margin-left: auto;
 }
 
 .nav-item {
-  margin: 0 20px;
+  position: relative;
 }
 
 .nav-link {
-  color: #fff;
   text-decoration: none;
-  font-size: 18px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  transition: transform 0.2s ease-in-out, color 0.3s ease-in-out;
 }
 
 .nav-link:hover {
-  background-color: #575757;
+  color: #007bff;
+  transform: scale(1.2); /* Pop effect on hover */
 }
+
+.profile-icon .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 30px; /* Increased icon size */
+  transition: transform 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+.profile-icon .nav-link:hover {
+  color: #007bff;
+  transform: scale(1.4); /* Pop effect on icon */
+}
+
+
 
 .homepage-content {
   margin-left: 500px;
