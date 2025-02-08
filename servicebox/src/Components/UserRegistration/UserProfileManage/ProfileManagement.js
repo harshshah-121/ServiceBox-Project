@@ -11,17 +11,16 @@ const ProfileManagement = ({ children }) => {
   // Function to handle logout
   const handleLogout = async () => {
     try {
-      const response = await fetch("user/user-logout/", {
+      const response = await fetch("http://127.0.0.1:8000/user/user-logout/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // If you are using cookies for sessions
+        credentials: "include", // If using cookies for authentication
       });
 
       if (response.ok) {
         alert("You have been logged out.");
-        // Redirect to login page
         navigate("/login");
       } else {
         alert("Logout failed. Please try again.");
@@ -33,20 +32,40 @@ const ProfileManagement = ({ children }) => {
   };
 
   // Function to handle account deletion
-  const handleDeleteAccount = () => {
-    const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
     if (confirmDelete) {
-      alert("Your account has been deleted.");
-      // Add API call to delete the account from backend
+      try {
+        const response = await fetch("user/delete-account/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // If authentication is required
+          body: JSON.stringify({ confirm: true }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Your account has been successfully deleted.");
+          navigate("/"); // Redirecting to register page after deletion
+        } else {
+          alert(result.message || "Failed to delete account. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error deleting account:", error);
+        alert("An error occurred. Please try again later.");
+      }
     }
   };
 
   return (
     <>
-      {/* <h2 className='profile-title'>Profile Management</h2> */}
       <div className="profile-management-container">
         <div className="profile-options">
-          <Link to="/Edit-profile" className="profile-button"><MdManageAccounts className="icon" /> Edit Profile</Link>
+          <Link to="/edit-profile" className="profile-button"><MdManageAccounts className="icon" /> Edit Profile</Link>
           <Link to="/change-password" className="profile-button"><FaLock className="icon" /> Change Password</Link>
           <Link to="/booking-history" className="profile-button"><FaHistory className="icon" /> Booking History</Link>
           <Link to="/complain" className='profile-button'><FaComment className="icon" /> Complain</Link>
