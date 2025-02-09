@@ -14,9 +14,11 @@ const EditProfile = () => {
     user_address: '',
     user_gender: '',
     user_age: '',
-    // profilePic: null,
-    // profilePicPreview: '',
+    profilePic: null,
+    profilePicPreview: "",
   });
+  const [message, setMessage] = useState("");
+  // const [errors, setErrors] = useState({});
 
   const [errors, setErrors] = useState({
     user_name: '',
@@ -48,11 +50,14 @@ const EditProfile = () => {
   // Handle profile picture upload
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && !file.type.startsWith('image/')) {
-      setErrors((prev) => ({ ...prev, profilePic: 'Only image files are allowed' }));
+
+    // Validate file type (only images)
+    if (file && !file.type.startsWith("image/")) {
+      setErrors((prev) => ({ ...prev, profilePic: "Only image files are allowed" }));
       return;
     }
 
+    // Preview image
     const reader = new FileReader();
     reader.onload = () => {
       setFormData((prev) => ({
@@ -63,8 +68,9 @@ const EditProfile = () => {
     };
     reader.readAsDataURL(file);
 
-    setErrors((prev) => ({ ...prev, profilePic: '' }));
+    setErrors((prev) => ({ ...prev, profilePic: "" }));
   };
+
 
   useEffect(() => {
     axios.get("user/user-profile/", { withCredentials: true })  
@@ -102,6 +108,29 @@ const EditProfile = () => {
     .catch(error => console.error("Profile update error:", error));
 
 
+  };
+
+
+  const handleUpload = async () => {
+    if (!formData.profilePic) {
+      setMessage("Please select an image first.");
+      return;
+    }
+
+    const imageData = new FormData();
+    imageData.append("profile_pic", formData.profilePic);
+
+    try {
+      const response = await axios.post("user/upload-profile-pic/", imageData, {
+        withCredentials: true, // Ensure session authentication works
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response?.data?.error || "Failed to upload image.");
+    }
   };
 
   return (
@@ -143,8 +172,16 @@ const EditProfile = () => {
         {/* Profile Picture Upload */}
         <label>Profile Pic:</label>
         <input type="file" accept="image/*" onChange={handleFileChange} />
-        {errors.profilePic && <p className="error">{errors.profilePic}</p>}
-        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />}
+      {errors.profilePic && <p style={{ color: "red" }}>{errors.profilePic}</p>}
+      
+      {formData.profilePicPreview && (
+        <img src={formData.profilePicPreview} alt="Profile Preview" style={{ width: "100px", height: "100px", objectFit: "cover", marginTop: "10px" }} />
+      )}
+
+      <button onClick={handleUpload}>Upload</button>
+      {message && <p>{message}</p>}
+        {/* {errors.profilePic && <p className="error">{errors.profilePic}</p>}
+        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />} */}
 
         {/* Submit Button */}
         <button type="submit" onClick={handleSubmit} className="save-button">Save Changes</button>

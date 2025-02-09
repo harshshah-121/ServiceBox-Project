@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegistrationSerializer,ContactUsSerializer,DeleteAccountSerializer,ChangePasswordSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
+from .serializers import UserRegistrationSerializer,ProfilePicSerializer,ContactUsSerializer,DeleteAccountSerializer,ChangePasswordSerializer,UserProfileSerializer,ResetPasswordSerializer,UserLoginSerializer,SendOTPSerializer,VerifyOTPSerializer,UserSerializer
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import User
@@ -203,4 +203,23 @@ class ContactUsView(APIView):
 
             return Response({"message": "Your message has been sent successfully!"}, status=status.HTTP_200_OK)
         
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class UploadProfilePicView(APIView):
+    def post(self, request):
+        user_id = request.session.get('user_id') 
+        if not user_id:
+            return Response({"error": "Authentication required"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        try:
+            user = User.objects.get(user_id=user_id)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ProfilePicSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Profile picture updated successfully"}, status=status.HTTP_200_OK)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
