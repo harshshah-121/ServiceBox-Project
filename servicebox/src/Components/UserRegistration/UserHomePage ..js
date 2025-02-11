@@ -1,11 +1,31 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import './UserHomePage .css';
 import mylogo from "../images/logo.png";
+import axios from 'axios';
 
 
 const UserHomePage = ({ children }) => {
+  const [profilePic, setProfilePic] = useState(null);
+
+  useEffect(() => {
+    const fetchProfilePicture = async () => {
+      try {
+        const response = await axios.get("user/profile-picture/", {
+          withCredentials: true,
+        });
+
+        if (response.data.profile_pic) {
+          setProfilePic(`${response.data.profile_pic}`);
+        }
+      } catch (error) {
+        console.error("Error fetching profile picture:", error);
+      }
+    };
+
+    fetchProfilePicture();
+  }, []);
   return (
     <div className="user-homepage">
        <nav className="navbar">
@@ -24,7 +44,11 @@ const UserHomePage = ({ children }) => {
         </li>
         <li className="nav-item profile-icon">
           <Link to="/edit-profile" className="nav-link">
-            <FaUserCircle size={24} />
+              {profilePic ? (
+                <img src={profilePic} alt="Profile" className="profile-pic" />
+              ) : (
+                <FaUserCircle size={24} />
+              )}
           </Link>
         </li>
       </ul>
