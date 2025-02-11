@@ -6,6 +6,7 @@ from .serializers import ServiceProviderSerializer
 
 class ServiceProviderRegisterView(APIView):
     def post(self, request):
+        print(request.data);
         serializer = ServiceProviderSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

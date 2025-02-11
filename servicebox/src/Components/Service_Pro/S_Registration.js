@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./S_Registration.css";
+import axios from "axios";
 
 const S_Registration = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirm_password: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -16,13 +17,13 @@ const S_Registration = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.firstName.trim()) errors.firstName = "First Name is required";
-    if (!formData.lastName.trim()) errors.lastName = "Last Name is required";
+    if (!formData.firstname.trim()) errors.firstname = "First Name is required";
+    if (!formData.lastname.trim()) errors.lastname = "Last Name is required";
     if (!emailRegex.test(formData.email)) errors.email = "Invalid email format";
     if (formData.password.length < 6)
       errors.password = "Password must be at least 6 characters long";
-    if (formData.password !== formData.confirmPassword)
-      errors.confirmPassword = "Passwords do not match";
+    if (formData.password !== formData.confirm_password)
+      errors.confirm_password = "Passwords do not match";
 
     setErrors(errors);
     return Object.keys(errors).length === 0;
@@ -30,11 +31,26 @@ const S_Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("Registration successful!");
-      console.log("Form Data:", formData);
-      // You can proceed to submit the data to the server here
+    
+    if (!validateForm()) {
+      return; 
     }
+  
+    axios.post("service_provider/register/", formData, {
+        headers: { "Content-Type": "application/json" },  
+        withCredentials: true, 
+      })
+      .then(response => {
+        alert("Registration Successful!");
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          password: "", 
+          confirm_password: "",
+        });
+      })
+      .catch(error => console.log("Registration error:", error));
   };
 
   const handleChange = (e) => {
@@ -50,22 +66,22 @@ const S_Registration = () => {
           First Name:
           <input
             type="text"
-            name="firstName"
-            value={formData.firstName}
+            name="firstname"
+            value={formData.firstname}
             onChange={handleChange}
           />
-          {errors.firstName && <p className="error">{errors.firstName}</p>}
+          {errors.firstname && <p className="error">{errors.firstname}</p>}
         </label>
 
         <label>
           Last Name:
           <input
             type="text"
-            name="lastName"
-            value={formData.lastName}
+            name="lastname"
+            value={formData.lastname}
             onChange={handleChange}
           />
-          {errors.lastName && <p className="error">{errors.lastName}</p>}
+          {errors.lastname && <p className="error">{errors.lastname}</p>}
         </label>
 
         <label>
@@ -94,14 +110,14 @@ const S_Registration = () => {
           Confirm Password:
           <input
             type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
+            name="confirm_password"
+            value={formData.confirm_password}
             onChange={handleChange}
           />
-          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          {errors.confirm_password && <p className="error">{errors.confirm_password}</p>}
         </label>
 
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./OtpRequest.css";
 
 const OtpRequest = () => {
@@ -9,6 +9,10 @@ const OtpRequest = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const type = searchParams.get("type") || "register"; // Default to "register"
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -27,10 +31,11 @@ const OtpRequest = () => {
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/user/send-otp/", { user_email: email });
+
       if (response.data.message) {
         setSuccessMessage(response.data.message);
         setTimeout(() => {
-          navigate(`/otp-verify?email=${encodeURIComponent(email)}`);
+          navigate(`/otp-verify?email=${encodeURIComponent(email)}&type=${type}`);
         }, 2000);
       } else {
         setErrorMessage(response.data.error || "An error occurred while sending OTP.");
@@ -49,11 +54,11 @@ const OtpRequest = () => {
       <form onSubmit={handleSubmit} className="otp-request-form">
         <div className="form-group">
           <label>Email Address</label>
-          <input type="email" name="user_email" value={email} onChange={handleChange} placeholder="Enter your email" required />
+          <input type="email" value={email} onChange={handleChange} placeholder="Enter your email" required />
         </div>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
         {successMessage && <div className="success-message">{successMessage}</div>}
-        <button type="submit" className="submit-button" disabled={loading}>{loading ? "Sending OTP..." : "Send OTP"}</button>
+        <button type="submit" disabled={loading}>{loading ? "Sending OTP..." : "Send OTP"}</button>
       </form>
     </div>
   );
