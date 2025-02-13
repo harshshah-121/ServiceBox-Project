@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ServiceProviderSerializer
+from .serializers import ServiceProviderSerializer,ServiceProvider_Main_Registraion_Serializer
 
 class ServiceProviderRegisterView(APIView):
     def post(self, request):
@@ -14,7 +14,7 @@ class ServiceProviderRegisterView(APIView):
 
 class ServiceProvider_Main_Registration(APIView):
     def post(self, request):
-        serializer = ServiceProviderSerializer(data=request.data)
+        serializer = ServiceProvider_Main_Registraion_Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Service Provider registered successfully!"}, status=status.HTTP_201_CREATED)
