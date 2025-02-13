@@ -12,4 +12,10 @@ class ServiceProviderRegisterView(APIView):
             return Response({"message": "Service Provider registered successfully!"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Create your views here.
+class ServiceProvider_Main_Registration(APIView):
+    def post(self, request):
+        serializer = ServiceProviderSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Service Provider registered successfully!"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
