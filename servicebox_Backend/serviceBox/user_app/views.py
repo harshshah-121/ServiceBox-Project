@@ -223,3 +223,22 @@ class UploadProfilePicView(APIView):
             return Response({"message": "Profile picture updated successfully"}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserProfilePictureView(APIView):
+    def get(self, request):
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return Response({"error": "User not authenticated"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        try:
+            user = User.objects.get(user_id=user_id)
+            if user.profile_pic:
+                profile_pic_url = f"{settings.MEDIA_URL}{user.profile_pic}"
+            else:
+                profile_pic_url = None
+
+            return Response({"profile_pic": profile_pic_url}, status=status.HTTP_200_OK)
+
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)

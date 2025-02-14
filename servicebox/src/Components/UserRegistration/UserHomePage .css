@@ -65,6 +65,18 @@ body {
   transform: scale(1.4); /* Pop effect on icon */
 }
 
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 
 
 .homepage-content {

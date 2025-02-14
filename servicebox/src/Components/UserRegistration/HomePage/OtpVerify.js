@@ -12,6 +12,7 @@ const OtpVerify = () => {
 
   const searchParams = new URLSearchParams(location.search);
   const email = searchParams.get("email");
+  const type = searchParams.get("type"); // "register" or "forgot"
 
   useEffect(() => {
     if (!email) {
@@ -40,8 +41,14 @@ const OtpVerify = () => {
       });
 
       console.log("OTP Verification Successful:", response.data);
-      alert("OTP verified successfully! Please reset your password.");
-      navigate(`/reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password
+      alert("OTP verified successfully!");
+
+      // Redirect based on the type
+      if (type === "register") {
+        navigate("/login"); // First-time login, redirect to login page
+      } else if (type === "forgot") {
+        navigate(`/reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password page
+      }
     } catch (error) {
       console.error("Error verifying OTP:", error);
       setErrorMessage("Invalid OTP. Please try again.");
@@ -60,7 +67,7 @@ const OtpVerify = () => {
           <input type="text" name="otp" value={otp} onChange={handleOtpChange} placeholder="Enter OTP" required />
         </div>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
-        <button type="submit" className="submit-button">Verify</button>
+        <button type="submit" className="submit-button" disabled={loading}>{loading ? "Verifying..." : "Verify OTP"}</button>
       </form>
     </div>
   );

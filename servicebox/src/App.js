@@ -13,6 +13,8 @@ import EditProfile from "./Components/UserRegistration/UserProfileManage/EditPro
 import ChangePassword from "./Components/UserRegistration/UserProfileManage/ChangePassword";
 import BookingHistory from "./Components/UserRegistration/UserProfileManage/BookingHistory";
 import UserHomePageContent from "./Components/UserRegistration/HomePage/UserHomePageContent";
+// import S_Registration from "./Components/Service_Pro/S_Registration";
+// import Service from "./Components/Service_Pro/Service";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,6 +26,8 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<UserLogin />} />
+                {/* <Route path="/" element={<S_Registration />} /> */}
+                {/* <Route path="/" element={<Service />} /> */}
                 <Route
                     path="/login"
                     element={<Login onLogin={handleLogin} />}
