@@ -3,13 +3,12 @@ import "./Service.css";
 
 const Service = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
     address: "",
-    password: "",
-    aadharNo: "",
     gender: "",
     status: "",
+    aadharCard: "",
+    electricityBill: "",
+    policeCertificate: "",
   });
 
   const handleSubmit = (e) => {
@@ -23,59 +22,20 @@ const Service = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+  };
+
   return (
     <div className="form-container">
       <h2>Service Provider Registration</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
           Address:
           <textarea
             name="address"
             value={formData.address}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          Aadhar No:
-          <input
-            type="text"
-            name="aadharNo"
-            value={formData.aadharNo}
             onChange={handleChange}
             required
           />
@@ -98,6 +58,21 @@ const Service = () => {
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
+        </label>
+
+        <label>
+          Aadhar Card (Photo Upload):
+          <input type="file" name="aadharCard" accept="image/*" onChange={handleFileChange} required />
+        </label>
+
+        <label>
+          Electricity Bill (Photo Upload):
+          <input type="file" name="electricityBill" accept="image/*" onChange={handleFileChange} required />
+        </label>
+
+        <label>
+          Police Clearance Certificate (Photo Upload):
+          <input type="file" name="policeCertificate" accept="image/*" onChange={handleFileChange} required />
         </label>
 
         <button type="submit">Submit</button>
