@@ -45,6 +45,7 @@ const Login = ({ onLogin }) => {
 
     try {
       const response = await axios.post("user/user-login/", formData);
+      alert("Login Successfully");
       navigate("/home-page"); // Redirect to home page after successful login
     } catch (error) {
       console.error("Error during login:", error);
