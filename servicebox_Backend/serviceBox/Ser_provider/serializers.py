@@ -1,10 +1,9 @@
 from rest_framework import serializers
 from .models import ServiceProvider
-from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password
 
 
-class ServiceProviderSerializer(serializers.ModelSerializer):
+class ServiceProvider_Basic_Registration_Serializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True, required=True)
 
     class Meta:
@@ -27,18 +26,21 @@ class ServiceProviderSerializer(serializers.ModelSerializer):
         )
         return user
 
-class ServiceProvider_Main_Registraion_Serializer(serializers.ModelSerializer):
-    email = serializers.EmailField(required=True)
-    aadhar_no = serializers.CharField(
-        min_length=12, max_length=12,
-        validators=[RegexValidator(r'^\d{12}$', "Aadhar number must be exactly 12 digits.")]
-    )
-    password = serializers.CharField(write_only=True, min_length=6)
+class ServiceProvider_Main_Registration_Serializer(serializers.ModelSerializer):
+    aadhar_card = serializers.ImageField(required=True)
+    electricity_bill = serializers.ImageField(required=True)
+    police_certificate = serializers.ImageField(required=True)
 
     class Meta:
         model = ServiceProvider
-        fields = ['name', 'email', 'address', 'password', 'aadhar_no', 'gender', 'status']
+        fields = ['address', 'gender', 'status', 'aadhar_card', 'electricity_bill', 'police_certificate']
 
-    def create(self, validated_data):
-        validated_data['password'] = make_password(validated_data['password'])  
-        return ServiceProvider.objects.create(**validated_data)
+    def validate_gender(self, value):
+        if value not in ["Male", "Female", "Other"]:
+            raise serializers.ValidationError("Invalid gender. Choose from Male, Female, or Other.")
+        return value
+
+    def validate_status(self, value):
+        if value not in ["Active", "In Active"]: 
+            raise serializers.ValidationError("Invalid status. Choose from Active or In Active.")
+        return value
