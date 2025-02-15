@@ -8,7 +8,7 @@ const Service = () => {
     status: "",
     aadharCard: "",
     electricityBill: "",
-    policeCertificate: "",
+    Policeclearancecertificate:"",
   });
 
   const handleSubmit = (e) => {
@@ -72,7 +72,7 @@ const Service = () => {
 
         <label>
           Police Clearance Certificate (Photo Upload):
-          <input type="file" name="policeCertificate" accept="image/*" onChange={handleFileChange} required />
+          <input type="file" name="Policeclearancecertificate" accept="image/*" onChange={handleFileChange} required />
         </label>
 
         <button type="submit">Submit</button>
