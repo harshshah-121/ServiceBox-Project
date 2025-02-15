@@ -1,0 +1,60 @@
+/* Navbar container */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* ServiceProvider logo */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation items */
+.nav-links li {
+    margin-left: 10px; /* Space between items */
+}
+
+/* Navigation links styling */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px; /* Adjusted padding */
+    transition: background 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* Profile icon */
+.profile-icon {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.profile-icon .nav-link:hover {
+    background-color: transparent;
+}
+
