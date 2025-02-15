@@ -49,7 +49,7 @@
 /* Profile Content */
 .profile-content {
     flex-grow: 1;
-    padding: 30px;
+    /* padding: 30px; */
     background: white;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -64,14 +64,14 @@
 .profile-content p {
     font-size: 16px;
     color: #666;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .profile-content input {
     display: block;
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    /* margin: 10px 0; */
     border: 1px solid #ccc;
     border-radius: 5px;
 }

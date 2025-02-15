@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import Service from "./Components/Service_Pro/Service";
+import S_Registration from "./Components/Service_Pro/S_Registration";
+import Service from "./Components/Service_Pro/Service";
 import S_Navbar from "./Components/Service_Pro/S_Provider-HomePage/S_Navbar";
 import EditProfile from "./Components/Service_Pro/S_Provider-HomePage/S_Profile/EditProfile";
 import AboutMe from "./Components/Service_Pro/S_Provider-HomePage/S_Profile/AboutMe";
@@ -12,8 +13,9 @@ const App = () => {
     return (
         <Router>
             <Routes>
-                {/* <Route path='/' element={<Service/>}></Route> */}
-                <Route path='/' element={<S_Navbar/>}></Route>
+                <Route path='/' element={<S_Registration/>}></Route>
+                <Route path='/service' element={<Service/>}></Route>
+                <Route path='/home-page' element={<S_Navbar/>}></Route>
                 <Route path='/edit-profile' element={<S_Navbar><EditProfile/></S_Navbar>}></Route>
                 <Route path='/about-me' element={<S_Navbar><AboutMe/></S_Navbar>}></Route>
                 <Route path='/work-area' element={<WorkArea/>}></Route>

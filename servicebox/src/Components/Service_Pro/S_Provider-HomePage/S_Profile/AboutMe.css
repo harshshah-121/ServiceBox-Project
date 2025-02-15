@@ -1,10 +1,10 @@
 .about-me-container {
-    max-width: 400px;
+    max-width: 320px;  /* Reduced width */
     margin: auto;
-    padding: 20px;
+    padding: 12px;  
     background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;  /* Smaller border-radius */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -13,33 +13,34 @@
 
 h2 {
     color: #333;
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 14px;  /* Reduced font size */
+    margin-bottom: 5px;  /* Less margin */
 }
 
 p {
     color: #666;
-    font-size: 13px;
-    margin-bottom: 15px;
+    font-size: 11px;  /* Smaller font */
+    /* margin-bottom: 8px;  Reduced spacing */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    /* margin-bottom: 6px;  */
     text-align: left;
 }
 
-input {
+input, textarea {
     display: block;
     width: 100%;
-    padding: 10px;
+    /* padding: 6px;  */
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 4px;  /* Smaller border-radius */
+    font-size: 12px;  /* Smaller font */
     outline: none;
-    transition: border 0.3s ease-in-out;
+    transition: border 0.2s ease-in-out;
+    /* margin-bottom: 3px;   */
 }
 
-input:focus {
+input:focus, textarea:focus {
     border: 2px solid #1abc9c;
 }
 
@@ -50,8 +51,8 @@ input:focus {
 
 .error-text {
     color: red;
-    font-size: 12px;
-    margin-top: 3px;
+    font-size: 9px;  /* Smaller font */
+    /* margin-top: 1px;  */
     font-weight: bold;
     text-align: left;
 }
@@ -60,19 +61,19 @@ button {
     width: 100%;
     background: #1abc9c;
     color: white;
-    padding: 10px;
+    padding: 6px;  /* Smaller button */
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 5px;
+    font-size: 13px;  /* Slightly smaller font */
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    margin-top: 8px;
+    transition: all 0.2s ease-in-out;
+    margin-top: 5px;  /* Reduced margin */
 }
 
 button:hover {
     background: #16a085;
-    transform: scale(1.03);
+    transform: scale(1.01);
 }
 
 body, html {

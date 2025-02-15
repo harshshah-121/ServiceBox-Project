@@ -3,13 +3,17 @@ import "./AboutMe.css"; // Import the CSS file
 
 const AboutMe = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
+    name: "",
+    address: "",
+    phoneNumber: "",
+    age: "",
   });
 
   const [errors, setErrors] = useState({
-    fullName: "",
-    email: "",
+    name: "",
+    address: "",
+    phoneNumber: "",
+    age: "",
   });
 
   const handleChange = (e) => {
@@ -21,13 +25,15 @@ const AboutMe = () => {
     e.preventDefault();
 
     let newErrors = {
-      fullName: formData.fullName.trim() === "" ? "This field is required" : "",
-      email: formData.email.trim() === "" ? "This field is required" : "",
+      name: formData.name.trim() === "" ? "This field is required" : "",
+      address: formData.address.trim() === "" ? "This field is required" : "",
+      phoneNumber: formData.phoneNumber.trim() === "" ? "This field is required" : "",
+      age: formData.age.trim() === "" ? "This field is required" : "",
     };
 
     setErrors(newErrors);
 
-    if (!newErrors.fullName && !newErrors.email) {
+    if (!newErrors.name && !newErrors.address && !newErrors.phoneNumber && !newErrors.age) {
       alert("Profile updated successfully!");
       // Add API call or form submission logic here if needed
     }
@@ -41,25 +47,48 @@ const AboutMe = () => {
         <div className="form-group">
           <input
             type="text"
-            name="fullName"
-            placeholder="Full Name"
-            value={formData.fullName}
+            name="name"
+            placeholder="Name"
+            value={formData.name}
             onChange={handleChange}
-            className={errors.fullName ? "input-error" : ""}
+            className={errors.name ? "input-error" : ""}
           />
-          {errors.fullName && <p className="error-text">{errors.fullName}</p>}
+          {errors.name && <p className="error-text">{errors.name}</p>}
+        </div>
+
+        <div className="form-group">
+          <textarea
+            name="address"
+            placeholder="Address"
+            value={formData.address}
+            onChange={handleChange}
+            className={errors.address ? "input-error" : ""}
+          />
+          {errors.address && <p className="error-text">{errors.address}</p>}
         </div>
 
         <div className="form-group">
           <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
+            type="text"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={formData.phoneNumber}
             onChange={handleChange}
-            className={errors.email ? "input-error" : ""}
+            className={errors.phoneNumber ? "input-error" : ""}
           />
-          {errors.email && <p className="error-text">{errors.email}</p>}
+          {errors.phoneNumber && <p className="error-text">{errors.phoneNumber}</p>}
+        </div>
+
+        <div className="form-group">
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            value={formData.age}
+            onChange={handleChange}
+            className={errors.age ? "input-error" : ""}
+          />
+          {errors.age && <p className="error-text">{errors.age}</p>}
         </div>
 
         <button type="submit">Save Changes</button>
