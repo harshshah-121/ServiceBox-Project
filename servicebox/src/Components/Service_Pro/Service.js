@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Service.css";
 
 const Service = () => {
@@ -8,13 +9,19 @@ const Service = () => {
     status: "",
     aadharCard: "",
     electricityBill: "",
-    Policeclearancecertificate:"",
+    Policeclearancecertificate: "",
   });
+
+  const navigate = useNavigate(); // Initialize navigate function
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     alert("Form submitted successfully!");
     console.log("Form Data:", formData);
+    
+    // Redirect to S_Navbar page after successful form submission
+    navigate("/s-login"); 
   };
 
   const handleChange = (e) => {
