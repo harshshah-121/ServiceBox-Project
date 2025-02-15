@@ -1,70 +1,48 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  background-color: #f8f9fa;
-  overflow: hidden;
-}
-
 .form-container {
-  width: 360px;
+  max-width: 400px;
+  margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-container h2 {
+h2 {
   text-align: center;
-  margin-bottom: 15px;
-  color: black;
-  text-decoration: underline;
-  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-  display: block;
   font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
-input,
 textarea,
-select {
+select,
+input[type="file"] {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
+  margin-top: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  font-size: 15px;
-}
-
-select {
-  font-size: 16px;
+  border-radius: 5px;
 }
 
 button {
-  width: 100%;
-  padding: 12px;
-  background-color: #4caf50;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #28a745;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
-}
-
-.error {
-  color: red;
-  font-size: 13px;
-  margin-top: 5px;
+  background-color: #218838;
 }
