@@ -27,13 +27,13 @@ class ServiceProvider_Basic_Registration_Serializer(serializers.ModelSerializer)
         return user
 
 class ServiceProvider_Main_Registration_Serializer(serializers.ModelSerializer):
-    aadhar_card = serializers.ImageField(required=True)
-    electricity_bill = serializers.ImageField(required=True)
-    police_certificate = serializers.ImageField(required=True)
+    aadharCard = serializers.ImageField(required=True)
+    electricityBill = serializers.ImageField(required=True)
+    policeCertificate = serializers.ImageField(required=True)
 
     class Meta:
         model = ServiceProvider
-        fields = ['address', 'gender', 'status', 'aadhar_card', 'electricity_bill', 'police_certificate']
+        fields = ['address', 'gender', 'status', 'aadharCard', 'electricityBill', 'policeCertificate']
 
     def validate_gender(self, value):
         if value not in ["Male", "Female", "Other"]:
