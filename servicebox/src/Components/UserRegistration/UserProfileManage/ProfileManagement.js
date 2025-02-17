@@ -65,13 +65,13 @@ const ProfileManagement = ({ children }) => {
     <>
       <div className="profile-management-container">
         <div className="profile-options">
-          <Link to="/edit-profile" className="profile-button"><MdManageAccounts className="icon" /> Edit Profile</Link>
-          <Link to="/change-password" className="profile-button"><FaLock className="icon" /> Change Password</Link>
-          <Link to="/booking-history" className="profile-button"><FaHistory className="icon" /> Booking History</Link>
-          <Link to="/complain" className='profile-button'><FaComment className="icon" /> Complain</Link>
-          <Link to="/review-rating" className='profile-button'><FaStar className="icon" /> Reviews & Rating</Link>
-          <button className="profile-button delete-account" onClick={handleDeleteAccount}><FaTrash className="icon" /> Delete Account</button>
-          <button className="profile-button logout" onClick={handleLogout}><FaSignOutAlt className="icon" /> Log Out</button>
+          <Link to="/user-edit-profile" className="profile-button"><MdManageAccounts className="icon" /> Edit Profile</Link>
+          <Link to="/user-change-password" className="profile-button"><FaLock className="icon" /> Change Password</Link>
+          <Link to="/user-booking-history" className="profile-button"><FaHistory className="icon" /> Booking History</Link>
+          <Link to="/user-complain" className='profile-button'><FaComment className="icon" /> Complain</Link>
+          <Link to="/user-review-rating" className='profile-button'><FaStar className="icon" /> Reviews & Rating</Link>
+          <button className="user-profile-button delete-account" onClick={handleDeleteAccount}><FaTrash className="icon" /> Delete Account</button>
+          <button className="user-profile-button logout" onClick={handleLogout}><FaSignOutAlt className="icon" /> Log Out</button>
         </div>
         <div className='profile-content'>
           {children}

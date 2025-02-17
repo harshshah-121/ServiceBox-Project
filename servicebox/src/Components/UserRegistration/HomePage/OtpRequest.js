@@ -35,7 +35,7 @@ const OtpRequest = () => {
       if (response.data.message) {
         setSuccessMessage(response.data.message);
         setTimeout(() => {
-          navigate(`/otp-verify?email=${encodeURIComponent(email)}&type=${type}`);
+          navigate(`/user-otp-verify?email=${encodeURIComponent(email)}&type=${type}`);
         }, 2000);
       } else {
         setErrorMessage(response.data.error || "An error occurred while sending OTP.");
@@ -49,16 +49,25 @@ const OtpRequest = () => {
   };
 
   return (
-    <div className="otp-request-container">
-      <h2>Request OTP</h2>
-      <form onSubmit={handleSubmit} className="otp-request-form">
-        <div className="form-group">
-          <label>Email Address</label>
-          <input type="email" value={email} onChange={handleChange} placeholder="Enter your email" required />
+    <div className="otp_request-container">
+      <h2 className="otp_request-heading">Request OTP</h2>
+      <form onSubmit={handleSubmit} className="otp_request-form">
+        <div className="otp_request-form-group">
+          <label className="otp_request-label">Email Address</label>
+          <input
+            type="email"
+            value={email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+            className="otp_request-input"
+          />
         </div>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        {successMessage && <div className="success-message">{successMessage}</div>}
-        <button type="submit" disabled={loading}>{loading ? "Sending OTP..." : "Send OTP"}</button>
+        {errorMessage && <div className="otp_request-error-message">{errorMessage}</div>}
+        {successMessage && <div className="otp_request-success-message">{successMessage}</div>}
+        <button type="submit" disabled={loading} className="otp_request-button">
+          {loading ? "Sending OTP..." : "Send OTP"}
+        </button>
       </form>
     </div>
   );

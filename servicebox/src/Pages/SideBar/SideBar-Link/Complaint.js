@@ -40,7 +40,7 @@ const Complaint = () => {
         <li><strong>Status:</strong> The current status of the complaint (e.g., Pending, In Progress, Resolved).</li>
         <li><strong>Submitted Date:</strong> The date when the complaint was submitted.</li>
       </ul>
-      <h3>Sample Complaints</h3>
+      <h3 className="complaintheading">Sample Complaints</h3>
       <table className="complaint-table">
         <thead>
           <tr>

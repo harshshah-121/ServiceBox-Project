@@ -40,7 +40,7 @@ const Feedback = () => {
         <li><strong>Rating:</strong> A numerical rating (e.g., 1-5).</li>
         <li><strong>Submitted Date:</strong> The date when the feedback was provided.</li>
       </ul>
-      <h3>Sample Feedback</h3>
+      <h3 className="feedback-heading">Sample Feedback</h3>
       <table className="feedback-table">
         <thead>
           <tr>

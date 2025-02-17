@@ -24,6 +24,7 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    font-size: 28px;
 }
 
 .user-table th {

@@ -7,7 +7,7 @@ function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({ username: "", password: "" });
+  const [adminErrors, setAdminErrors] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false); // For loading state
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function AdminLogin() {
       valid = false;
     }
 
-    setErrors(tempErrors);
+    setAdminErrors(tempErrors);
     return valid;
   };
 
@@ -34,7 +34,7 @@ function AdminLogin() {
       try {
         setLoading(true); 
 
-        const response = await axios.post("http://127.0.0.1:8000/api/login/", {
+        const response = await axios.post("api/login/", {
           username: username,
           password: password,
         });
@@ -55,44 +55,44 @@ function AdminLogin() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Admin Login</h2>
+    <div className="admin-login-container">
+      <div className="admin-login-box">
+        <h2 className="admin-heading">Admin Login</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
+          <div className="admin-form-group">
+            <label htmlFor="username" className="username">Username:</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
-              className={errors.username ? "input-error" : ""}
+              className={adminErrors.username ? "input-error" : ""}
             />
-            {errors.username && <small className="error">{errors.username}</small>}
+            {adminErrors.username && <small className="error">{adminErrors.username}</small>}
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
+          <div className="admin-form-group">
+            <label htmlFor="password" className="password">Password:</label>
             <input
               type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className={errors.password ? "input-error" : ""}
+              className={adminErrors.password ? "input-error" : ""}
             />
-            {errors.password && (
-              <small className="error">{errors.password}</small>
+            {adminErrors.password && (
+              <small className="error">{adminErrors.password}</small>
             )}
           </div>
-          <div className="form-group checkbox-group">
+          <div className="admin-form-group checkbox-group">
             <input
               type="checkbox"
               id="show-password"
               checked={showPassword}
               onChange={() => setShowPassword(!showPassword)}
             />
-            <label htmlFor="show-password">Show Password</label>
+            <label htmlFor="show-password" className="show-password">Show Password</label>
           </div>
           <button type="submit" className="login-btn" disabled={loading}>
             {loading ? "Logging In..." : "Login"}

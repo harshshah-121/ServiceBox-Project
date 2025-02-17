@@ -6,7 +6,7 @@ import "./S_Navbar.css";
 const S_Navbar = ({ children }) => {
     return (
         <div>
-            <nav className="navbar">
+            <nav className="s-navbar">
                 <div className="logo">ServiceProvider</div>
                 <ul className="nav-links">
                     <li><Link to="/update-invoice">Update Invoice</Link></li>
@@ -15,7 +15,7 @@ const S_Navbar = ({ children }) => {
                     <li><Link to="/listing-jobs">Listing Jobs</Link></li>
                     <li><Link to="/service-requests">Service Requests</Link></li>
                     <li className="nav-item profile-icon">
-                        <Link to="/edit-profile" className="nav-link">
+                        <Link to="/s-edit_profile" className="nav-link">
                             <FaUserCircle size={24} />
                         </Link>
                     </li>

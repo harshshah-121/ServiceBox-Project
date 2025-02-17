@@ -1,12 +1,14 @@
 .profile-management-container {
   display: flex;
   height: 100vh;
+  width: 100vw;
+  margin-bottom: 20px;
 }
 
 .profile-options {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 200px;
   background-color: #f8f9fa;
   position: relative;
 }

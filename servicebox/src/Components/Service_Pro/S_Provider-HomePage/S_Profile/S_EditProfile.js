@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaUser, FaBriefcase, FaLock, FaPauseCircle } from "react-icons/fa"; // Import icons
-import "./EditProfile.css";
+import './S_EditProfile.css';
 import AboutMe from "./AboutMe";
 import WorkArea from "./WorkArea";
-import ChangePassword from "./ChangePassword";
+import ChangePassword from "./S_ChangePassword";
 import PauseAccount from "./PauseAccount";
 
 const EditProfile = () => {
