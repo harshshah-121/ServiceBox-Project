@@ -36,7 +36,7 @@ class ServiceProvider(AbstractBaseUser):
     status = models.CharField(max_length=50, choices=[("Active", "Active"), ("In Active", "In Active")], default="Active")
     # is_admin = models.BooleanField(default=False)
     
-    class meta:
+    class Meta:
         db_table='serviceProvider'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['firstname', 'lastname']
