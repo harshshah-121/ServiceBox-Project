@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./S_Registration.css";
 import axios from "axios";
 
@@ -12,6 +13,7 @@ const S_Registration = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Initialize navigate function
 
   const validateForm = () => {
     const errors = {};
@@ -49,6 +51,7 @@ const S_Registration = () => {
           password: "", 
           confirm_password: "",
         });
+        navigate("/service"); // Redirect to service page
       })
       .catch(error => console.log("Registration error:", error));
   };
@@ -117,7 +120,7 @@ const S_Registration = () => {
           {errors.confirm_password && <p className="error">{errors.confirm_password}</p>}
         </label>
 
-        <button type="submit" onClick={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

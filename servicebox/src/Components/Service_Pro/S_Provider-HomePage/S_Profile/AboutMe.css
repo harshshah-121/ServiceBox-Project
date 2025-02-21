@@ -1,0 +1,82 @@
+.about-me-container {
+    max-width: 320px;  /* Reduced width */
+    margin: auto;
+    padding: 12px;  
+    background: #f9f9f9;
+    border-radius: 6px;  /* Smaller border-radius */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    color: #333;
+    font-size: 14px;  /* Reduced font size */
+    margin-bottom: 5px;  /* Less margin */
+}
+
+p {
+    color: #666;
+    font-size: 11px;  /* Smaller font */
+    /* margin-bottom: 8px;  Reduced spacing */
+}
+
+.form-group {
+    /* margin-bottom: 6px;  */
+    text-align: left;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    /* padding: 6px;  */
+    border: 1px solid #ccc;
+    border-radius: 4px;  /* Smaller border-radius */
+    font-size: 12px;  /* Smaller font */
+    outline: none;
+    transition: border 0.2s ease-in-out;
+    /* margin-bottom: 3px;   */
+}
+
+input:focus, textarea:focus {
+    border: 2px solid #1abc9c;
+}
+
+.input-error {
+    border: 2px solid red !important;
+    background: #ffe6e6;
+}
+
+.error-text {
+    color: red;
+    font-size: 9px;  /* Smaller font */
+    /* margin-top: 1px;  */
+    font-weight: bold;
+    text-align: left;
+}
+
+button {
+    width: 100%;
+    background: #1abc9c;
+    color: white;
+    padding: 6px;  /* Smaller button */
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;  /* Slightly smaller font */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 5px;  /* Reduced margin */
+}
+
+button:hover {
+    background: #16a085;
+    transform: scale(1.01);
+}
+
+body, html {
+    overflow: hidden;
+    height: 100vh;
+}
