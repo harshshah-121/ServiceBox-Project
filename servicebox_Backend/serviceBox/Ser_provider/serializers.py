@@ -44,3 +44,18 @@ class ServiceProvider_Main_Registration_Serializer(serializers.ModelSerializer):
         if value not in ["Active", "In Active"]: 
             raise serializers.ValidationError("Invalid status. Choose from Active or In Active.")
         return value
+    
+    def validate_aadharCard(self, value):
+        if not value.content_type.startswith('image'):
+            raise serializers.ValidationError("Only image files are allowed.")
+        return value
+    
+    def validate_electricityBill(self, value):
+        if not value.content_type.startswith('image'):
+            raise serializers.ValidationError("Only image files are allowed.")
+        return value
+    
+    def validate_policeClearanceCertificate(self, value):
+        if not value.content_type.startswith('image'):
+            raise serializers.ValidationError("Only image files are allowed.")
+        return value
