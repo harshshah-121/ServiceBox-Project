@@ -63,7 +63,7 @@ const Service = () => {
           <select name="status" value={formData.status} onChange={handleChange} required>
             <option value="">Select</option>
             <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+            <option value="In Active">In Active</option>
           </select>
         </label>
 
