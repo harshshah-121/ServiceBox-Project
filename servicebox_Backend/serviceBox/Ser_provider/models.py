@@ -26,7 +26,7 @@ class ServiceProvider(AbstractBaseUser):
     address=models.TextField(null=True, blank=True)
     aadharCard=models.ImageField(upload_to="identification_docs/", null=True, blank=True)
     electricityBill=models.ImageField(upload_to="identification_docs/", null=True, blank=True)
-    policeCertificate=models.ImageField(upload_to="identification_docs/", null=True, blank=True)
+    Policeclearancecertificate=models.ImageField(upload_to="identification_docs/", null=True, blank=True)
     phone_number=models.CharField(max_length=15, null=True, blank=True)
     date_of_birth=models.DateField(null=True, blank=True)
     age=models.IntegerField(null=True, blank=True)
