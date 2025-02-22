@@ -37,7 +37,7 @@ class ServiceProvider(AbstractBaseUser):
     # is_admin = models.BooleanField(default=False)
     
     class Meta:
-        db_table='serviceProvider'
+        db_table='serviceprovider'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['firstname', 'lastname']
 
