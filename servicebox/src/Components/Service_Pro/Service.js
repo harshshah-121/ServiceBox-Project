@@ -14,14 +14,36 @@ const Service = () => {
 
   const navigate = useNavigate(); // Initialize navigate function
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    alert("Form submitted successfully!");
-    console.log("Form Data:", formData);
-    
-    // Redirect to S_Navbar page after successful form submission
-    navigate("/s-login"); 
+  
+    // Create FormData object to send files properly
+    const formDataToSend = new FormData();
+    formDataToSend.append("address", formData.address);
+    formDataToSend.append("gender", formData.gender);
+    formDataToSend.append("status", formData.status);
+    formDataToSend.append("aadharCard", formData.aadharCard);
+    formDataToSend.append("electricityBill", formData.electricityBill);
+    formDataToSend.append("Policeclearancecertificate", formData.Policeclearancecertificate);
+  
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/service-provider/", { 
+        method: "POST",
+        body: formDataToSend, 
+      });
+  
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        console.log("Form Data:", formData);
+        navigate("/s-login"); // Redirect after success
+      } else {
+        alert("Failed to submit form");
+        console.error("Error:", await response.json());
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   const handleChange = (e) => {
@@ -31,8 +53,11 @@ const Service = () => {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+    if (files.length > 0) {
+      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+    }
   };
+  
 
   return (
     <div className="form-container">
