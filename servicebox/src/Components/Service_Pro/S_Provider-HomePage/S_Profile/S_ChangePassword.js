@@ -34,7 +34,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="change-password-container">
+    <div className="s-change-password-container">
       <h2>Change Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

@@ -1,14 +1,16 @@
-/* Full-page background styling */
-.s_login-container {
+body{
+    background-color: white;
+}
+.service-login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #e3f2fd; /* Light blue background */
+    /* height: 100vh; */
+    background-color: white
 }
 
 /* Login form styling */
-.s_login-form {
+.service-login-form {
     background: white;
     padding: 40px;
     border-radius: 12px;
@@ -18,45 +20,50 @@
 }
 
 /* Heading styling */
-.s_heading {
+.service-heading {
     margin-bottom: 25px;
     color: #333;
-    font-size: 28px; 
+    font-size: 28px;
     text-decoration: underline;
 }
 
 /* Input field container */
-.s_input-group {
+.service-input-group {
     margin-bottom: 20px;
     text-align: left;
 }
 
 /* Input field labels */
-.s_label {
+.service-label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
     font-size: 18px; /* Bigger labels */
 }
-
-/* Input fields */
-.s_input {
+/* .service-email{
     width: 100%;
-    padding: 12px; /* Larger input fields */
+    padding: 10px;
+    font-size: 16px;
+    height: 60%;
+} */
+/* Input fields */
+.service-input {
+    width: 100%;
+    padding: 12px; 
     border: 2px solid #bbb;
     border-radius: 6px;
     font-size: 16px; /* Bigger input text */
 }
 
 /* Error messages */
-.s_error {
+.service-error {
     color: red;
     font-size: 14px; /* Slightly bigger for visibility */
     margin-top: 5px;
 }
 
 /* Login button */
-.s_login-button {
+.service-login-button {
     width: 100%;
     padding: 14px; /* Bigger button */
     background-color: #007bff;
@@ -70,6 +77,6 @@
 }
 
 /* Hover effect for button */
-.s_login-button:hover {
+.service-login-button:hover {
     background-color: #0056b3;
 }

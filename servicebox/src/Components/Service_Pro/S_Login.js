@@ -4,7 +4,6 @@ import "./S_login.css";
 
 const S_Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
     
   const handleChange = (e) => {
@@ -13,60 +12,43 @@ const S_Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newErrors = {};
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email format";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    }
-
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      alert("Login Successfully!");
-      console.log("Form Submitted", formData);
-      navigate("/home-page");
-      // Proceed with login logic
-    }
+    alert("Login Successfully!");
+    console.log("Form Submitted", formData);
+    navigate("/s-home-page");
   };
 
   return (
-    <div className="s_login-container">
-      <form className="s_login-form" onSubmit={handleSubmit}>
-        <h2 className="s_heading">Service Provider Login</h2>
+    <div className="service-login-container">
+      <form className="service-login-form" onSubmit={handleSubmit}>
+        <h2 className="service-heading">Service Provider Login</h2>
         
-        <div className="s_input-group">
-          <label className="s_label">Email</label>
+        <div className="service-input-group">
+          <label className="service-label">Email</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            className="s_input"
+            className="service-input"
+            required
           />
-          {errors.email && <span className="s_error">{errors.email}</span>}
         </div>
 
-        <div className="s_input-group">
-          <label className="s_label">Password</label>
+        <div className="service-input-group">
+          <label className="service-label">Password</label>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-            className="s_input"
+            className="service-input"
+            required
           />
-          {errors.password && <span className="s_error">{errors.password}</span>}
         </div>
 
-        <button type="submit" className="s_login-button">Login</button>
+        <button type="submit" className="service-login-button">Login</button>
       </form>
     </div>
   );

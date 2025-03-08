@@ -45,9 +45,9 @@ const App = () => {
             <Routes>
                 {/* <Route path="/Login" element={<Login />} /> */}
                 {/* <Route path="/home-page" element={<UserHomePage />} /> */}
-                <Route path="/admin-contact-us" element={<ContactUs />} />
-                <Route path="/admin-profile-management" element={<ProfileManagement />} />
-                <Route path="/admin-select-service" element={<SelectService />} />
+                {/* <Route path="/admin-contact-us" element={<ContactUs />} /> */}
+                {/* <Route path="/admin-profile-management" element={<ProfileManagement />} /> */}
+                {/* <Route path="/admin-select-service" element={<SelectService />} /> */}
                 {/* <Route path="/search-service" element={<SearchService />} /> */}
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/admin-dashboard" element={<Layout><MainContent /></Layout>} />
@@ -75,15 +75,15 @@ const App = () => {
                 <Route path="/user-edit-profile" element={<UserHomePage><ProfileManagement ><EditProfile /></ProfileManagement></UserHomePage>} />
                 <Route path="/user-change-password" element={<UserHomePage><ProfileManagement ><ChangePassword /></ProfileManagement></UserHomePage>} />
                 <Route path="/user-booking-history" element={<UserHomePage><ProfileManagement ><BookingHistory /></ProfileManagement></UserHomePage>} />
+                {/* <Route path='/service' element={<Service />}></Route> */}
                 <Route path='/s-registration' element={<S_Registration />}></Route>
-                <Route path='/service' element={<Service />}></Route>
                 <Route path='/s-login' element={<S_Login />}></Route>
                 <Route path='/s-home-page' element={<S_Navbar />}></Route>
                 <Route path='/s-edit_profile' element={<S_Navbar><S_EditProfile /></S_Navbar>}></Route>
                 <Route path='/s-about-me' element={<S_Navbar><AboutMe /></S_Navbar>}></Route>
-                <Route path='/s-work-area' element={<WorkArea />}></Route>
-                <Route path='/s-change-password' element={<S_ChangePassword />}></Route>
-                <Route path='/s-pause-account' element={<PauseAccount />}></Route>
+                <Route path='/s-work-area' element={<S_Navbar><WorkArea /></S_Navbar>}></Route>
+                <Route path='/s-change-password' element={<S_Navbar><S_ChangePassword /></S_Navbar>}></Route>
+                <Route path='/s-pause-account' element={<S_Navbar><PauseAccount /></S_Navbar>}></Route>
             </Routes>
         </Router>
     );

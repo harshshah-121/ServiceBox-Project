@@ -106,26 +106,26 @@ const EditProfile = () => {
       <h2  className='user_edit-profile'>Edit Profile</h2>
       <form className='user-editprofile'>
         {/* Username */}
-        <label className='user_name'>Username:</label>
+        <label className='usr_name'>Username:</label>
         <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} required />
         {errors.user_name && <p className="error">{errors.user_name}</p>}
 
         {/* Email (Disabled) */}
-        <label className='user_email'>Email:</label>
+        <label className='usr_email'>Email:</label>
         <input type="email" name="user_email" value={formData.user_email} disabled />
         
         {/* Phone Number */}
-        <label  className='user_phoneno'>Phone No:</label>
+        <label  className='usr_phoneno'>Phone No:</label>
         <input type="tel" name="user_phone_number" value={formData.user_phone_number} onChange={handleChange} required />
         {errors.user_phone_number && <p className="error">{errors.user_phone_number}</p>}
 
         {/* Address */}
-        <label  className='user_address'>Address:</label>
-        <textarea name="user_address" value={formData.user_address} onChange={handleChange} required></textarea>
+        <label  className='usr_address'>Address:</label>
+        <textarea name="user_address" className='usr_add' value={formData.user_address} onChange={handleChange} required></textarea>
 
         {/* Gender Selection */}
-        <label  className='user_gender'>Gender:</label>
-        <select name="gender" value={formData.user_gender} onChange={handleChange} required>
+        <label  className='usr_gender'>Gender:</label>
+        <select className='u_gender' name="gender" value={formData.user_gender} onChange={handleChange} required>
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -133,12 +133,12 @@ const EditProfile = () => {
         </select>
 
         {/* Age */}
-        <label  className='user_Age'>Age:</label>
+        <label  className='usr_Age'>Age:</label>
         <input type="number" name="user_age" value={formData.user_age} onChange={handleChange} required />
         {errors.user_age && <p className="error">{errors.user_age}</p>}
 
         {/* Profile Picture Upload */}
-        <label  className='user_profilepic'>Profile Pic:</label>
+        <label  className='usr_profilepic'>Profile Pic:</label>
         <input type="file" accept="image/*" onChange={handleFileChange} />
         {errors.profilePic && <p className="error">{errors.profilePic}</p>}
         {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />}

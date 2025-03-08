@@ -1,23 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import "./S_Navbar.css";
 
 const S_Navbar = ({ children }) => {
+    console.log("S_Navbar is rendering...");  // Debugging line
+
     return (
         <div>
-            <nav className="s-navbar">
-                <div className="logo">ServiceProvider</div>
-                <ul className="nav-links">
-                    <li><Link to="/update-invoice">Update Invoice</Link></li>
-                    <li><Link to="/my-business">My Business</Link></li>
-                    <li><Link to="/managing-availability">Managing & Availability</Link></li>
-                    <li><Link to="/listing-jobs">Listing Jobs</Link></li>
-                    <li><Link to="/service-requests">Service Requests</Link></li>
-                    <li className="nav-item profile-icon">
-                        <Link to="/s-edit_profile" className="nav-link">
+            <nav className="service-navbar">
+                <div className="service-logo">ServiceProvider</div>
+                <ul className="service-nav-links">
+                    <li><a href="/update-invoice">Update Invoice</a></li>
+                    <li><a href="/my-business">My Business</a></li>
+                    <li><a href="/managing-availability">Managing & Availability</a></li>
+                    <li><a href="/listing-jobs">Listing Jobs</a></li>
+                    <li><a href="/service-requests">Service Requests</a></li>
+                    <li className="service-nav-item service-profile-icon">
+                        <a href="/s-edit_profile" className="service-nav-link">
                             <FaUserCircle size={24} />
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </nav>

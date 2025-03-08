@@ -3,8 +3,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.form-container {
-  width: 320px;
+.service-form-container {
+  width: 26vw;
   margin: 10px auto;
   padding: 15px;
   border: 1px solid #ccc;
@@ -13,20 +13,21 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-container h2 {
+.service-form-container h2 {
   text-align: center;
   margin-bottom: 15px;
-  font-size: 18px;
+  text-decoration: underline;
+  font-size: 28px;
 }
 
-label {
+.f_name {
   display: block;
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
 }
 
-input {
+input_name {
   width: 100%;
   padding: 4px;
   margin-bottom: 8px;
