@@ -38,19 +38,19 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="reset-container">
+    <div className="reset_password-container">
       <h2>Reset Password</h2>
-      {message && <div className="message">{message}</div>}
-      <form onSubmit={handleSubmit} className="reset-form">
-        <div className="form-group">
+      {message && <div className="reset_password-message">{message}</div>}
+      <form onSubmit={handleSubmit} className="reset_password-form">
+        <div className="reset_password-form-group">
           <label>Email Address</label>
           <input type="email" value={formData.user_email} disabled />
         </div>
-        <div className="form-group">
+        <div className="reset_password-form-group">
           <label>New Password</label>
           <input type="password" name="new_password" value={formData.new_password} onChange={handleChange} required />
         </div>
-        <button type="submit">Reset Password</button>
+        <button type="submit" className="reset_password-submit-button">Reset Password</button>
       </form>
     </div>
   );

@@ -47,7 +47,7 @@ const OtpVerify = () => {
       if (type === "register") {
         navigate("/login"); // First-time login, redirect to login page
       } else if (type === "forgot") {
-        navigate(`/reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password page
+        navigate(`/user-reset-password?email=${encodeURIComponent(email)}`); // Redirect to Reset Password page
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -58,16 +58,26 @@ const OtpVerify = () => {
   };
 
   return (
-    <div className="otp-verify-container">
-      <h2>Verify OTP</h2>
-      {email ? <p>Verifying for: <strong>{email}</strong></p> : null}
-      <form onSubmit={handleSubmit} className="otp-verify-form">
-        <div className="form-group">
-          <label>OTP:</label>
-          <input type="text" name="otp" value={otp} onChange={handleOtpChange} placeholder="Enter OTP" required />
+    <div className="otp_verify-container">
+      <h2 className="otp_verify-heading">Verify OTP</h2>
+      {email ? <p className="otp_verify-email-info">Verifying for: <strong>{email}</strong></p> : null}
+      <form onSubmit={handleSubmit} className="otp_verify-form">
+        <div className="otp_verify-form-group">
+          <label className="otp_verify-label">OTP:</label>
+          <input 
+            type="text" 
+            name="otp" 
+            value={otp} 
+            onChange={handleOtpChange} 
+            placeholder="Enter OTP" 
+            className="otp_verify-input" 
+            required 
+          />
         </div>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        <button type="submit" className="submit-button" disabled={loading}>{loading ? "Verifying..." : "Verify OTP"}</button>
+        {errorMessage && <div className="otp_verify-error-message">{errorMessage}</div>}
+        <button type="submit" className="otp_verify-submit-button" disabled={loading}>
+          {loading ? "Verifying..." : "Verify OTP"}
+        </button>
       </form>
     </div>
   );

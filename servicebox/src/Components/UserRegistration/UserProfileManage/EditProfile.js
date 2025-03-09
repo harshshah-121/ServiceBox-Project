@@ -9,16 +9,11 @@ const EditProfile = () => {
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     user_name: '',
-    // user_email: '',
     user_phone_number: '',
     user_address: '',
     user_gender: '',
     user_age: '',
-    profilePic: null,
-    profilePicPreview: "",
   });
-  const [message, setMessage] = useState("");
-  // const [errors, setErrors] = useState({});
 
   const [errors, setErrors] = useState({
     user_name: '',
@@ -50,14 +45,11 @@ const EditProfile = () => {
   // Handle profile picture upload
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-
-    // Validate file type (only images)
-    if (file && !file.type.startsWith("image/")) {
-      setErrors((prev) => ({ ...prev, profilePic: "Only image files are allowed" }));
+    if (file && !file.type.startsWith('image/')) {
+      setErrors((prev) => ({ ...prev, profilePic: 'Only image files are allowed' }));
       return;
     }
 
-    // Preview image
     const reader = new FileReader();
     reader.onload = () => {
       setFormData((prev) => ({
@@ -68,9 +60,8 @@ const EditProfile = () => {
     };
     reader.readAsDataURL(file);
 
-    setErrors((prev) => ({ ...prev, profilePic: "" }));
+    setErrors((prev) => ({ ...prev, profilePic: '' }));
   };
-
 
   useEffect(() => {
     axios.get("user/user-profile/", { withCredentials: true })  
@@ -110,54 +101,31 @@ const EditProfile = () => {
 
   };
 
-
-  const handleUpload = async () => {
-    if (!formData.profilePic) {
-      setMessage("Please select an image first.");
-      return;
-    }
-
-    const imageData = new FormData();
-    imageData.append("profile_pic", formData.profilePic);
-
-    try {
-      const response = await axios.post("user/upload-profile-pic/", imageData, {
-        withCredentials: true, // Ensure session authentication works
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      setMessage(response.data.message);
-    } catch (error) {
-      setMessage(error.response?.data?.error || "Failed to upload image.");
-    }
-  };
-
   return (
-    <div className="edit-profile-container">
-      <h2>Edit Profile</h2>
-      <form>
+    <div className="user-profile-container">
+      <h2  className='user_edit-profile'>Edit Profile</h2>
+      <form className='user-editprofile'>
         {/* Username */}
-        <label>Username:</label>
+        <label className='usr_name'>Username:</label>
         <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} required />
         {errors.user_name && <p className="error">{errors.user_name}</p>}
 
         {/* Email (Disabled) */}
-        <label>Email:</label>
+        <label className='usr_email'>Email:</label>
         <input type="email" name="user_email" value={formData.user_email} disabled />
         
         {/* Phone Number */}
-        <label>Phone No:</label>
+        <label  className='usr_phoneno'>Phone No:</label>
         <input type="tel" name="user_phone_number" value={formData.user_phone_number} onChange={handleChange} required />
         {errors.user_phone_number && <p className="error">{errors.user_phone_number}</p>}
 
         {/* Address */}
-        <label>Address:</label>
-        <textarea name="user_address" value={formData.user_address} onChange={handleChange} required></textarea>
+        <label  className='usr_address'>Address:</label>
+        <textarea name="user_address" className='usr_add' value={formData.user_address} onChange={handleChange} required></textarea>
 
         {/* Gender Selection */}
-        <label>Gender:</label>
-        <select name="user_gender" value={formData.user_gender} onChange={handleChange} required>
+        <label  className='usr_gender'>Gender:</label>
+        <select className='u_gender' name="gender" value={formData.user_gender} onChange={handleChange} required>
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -165,23 +133,15 @@ const EditProfile = () => {
         </select>
 
         {/* Age */}
-        <label>Age:</label>
+        <label  className='usr_Age'>Age:</label>
         <input type="number" name="user_age" value={formData.user_age} onChange={handleChange} required />
         {errors.user_age && <p className="error">{errors.user_age}</p>}
 
         {/* Profile Picture Upload */}
-        <label>Profile Pic:</label>
+        <label  className='usr_profilepic'>Profile Pic:</label>
         <input type="file" accept="image/*" onChange={handleFileChange} />
-      {errors.profilePic && <p style={{ color: "red" }}>{errors.profilePic}</p>}
-      
-      {formData.profilePicPreview && (
-        <img src={formData.profilePicPreview} alt="Profile Preview" style={{ width: "100px", height: "100px", objectFit: "cover", marginTop: "10px" }} />
-      )}
-
-      <button onClick={handleUpload}>Upload</button>
-      {message && <p>{message}</p>}
-        {/* {errors.profilePic && <p className="error">{errors.profilePic}</p>}
-        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />} */}
+        {errors.profilePic && <p className="error">{errors.profilePic}</p>}
+        {formData.profilePicPreview && <img src={formData.profilePicPreview} alt="Profile" className="profile-pic-preview" />}
 
         {/* Submit Button */}
         <button type="submit" onClick={handleSubmit} className="save-button">Save Changes</button>
@@ -190,4 +150,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditProfile;

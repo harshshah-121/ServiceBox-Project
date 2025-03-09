@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ChangePassword.css";
+import './S_ChangePassword.css';
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -34,7 +34,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="change-password-container">
+    <div className="s-change-password-container">
       <h2>Change Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

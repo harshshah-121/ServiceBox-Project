@@ -7,7 +7,7 @@ const PauseAccount = () => {
   };
 
   return (
-    <div className="pause-account-container">
+    <div className="s-pause-account-container">
       <h2>Pause Account</h2>
       <p>Temporarily deactivate your account.</p>
       <button className="pause-btn" onClick={handlePauseClick}>

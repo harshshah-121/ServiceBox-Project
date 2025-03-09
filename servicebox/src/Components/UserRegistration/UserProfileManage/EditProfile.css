@@ -1,72 +1,86 @@
-.edit-profile-container {
-  max-width: 350px; /* Slightly reduced width */
-  margin: 5px auto;
-  padding: 8px;
-  background: #F5F5F5;
-  border-radius: 6px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
-  margin-top: 5px;
-  text-align: left;
+.user-profile-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 15px; /* Reduced padding */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  
+  /* Fix for form overflowing */
+  max-height: 90vh; /* Ensures form fits screen */
+  overflow-y: auto; /* Enables scrolling if content is too long */
 }
 
-h2 {
-  margin-bottom: 4px;
-  font-size: 16px; /* Slightly reduced */
-  text-align: left;
-  text-decoration: underline;
-}
-
-form label {
-  display: block;
-  font-size: 12px; /* Smaller font */
+/* Title */
+.user_edit-profile {
+  font-size: 20px; /* Reduced font */
   font-weight: bold;
-  margin: 3px 0;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-form input,
-form select,
-form textarea {
-  width: 100%;
+/* Form */
+.user-editprofile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Reduced gap */
+}
+
+/* Labels */
+.usr_name, .usr_email, .usr_phoneno, .usr_address, 
+.usr_Age, .usr_gender, .usr_profilepic {
+  font-weight: bold;
+  font-size: 14px; /* Smaller font */
+  color: #444;
+  margin-bottom: -5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
   padding: 4px;
-  font-size: 12px; /* Reduced size */
   border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 4px;
+  border-radius: 4px;
+  /* font-size: 14px; */
+  box-sizing: border-box;
 }
 
+/* Textarea */
 textarea {
+  height: 50px; /* Reduced height */
   resize: none;
-  height: 35px; /* Slightly smaller height */
 }
 
+/* Profile Picture Preview */
 .profile-pic-preview {
-  width: 40px; /* Reduced size */
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-top: 4px;
+  max-width: 50px; /* Reduced size */
+  max-height: 50px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
+/* Submit Button */
 .save-button {
-  width: 100%;
   background-color: #007bff;
   color: white;
-  padding: 5px;
+  padding: 8px; /* Smaller padding */
   border: none;
-  border-radius: 3px;
-  font-size: 12px; /* Reduced size */
+  border-radius: 4px;
+  font-size: 14px; /* Reduced font size */
   cursor: pointer;
-  margin-top: 4px;
-  text-align: left;
+  transition: background 0.3s;
+  width: 100%;
+  position: sticky;
+  bottom: 0; /* Keep button always visible */
 }
 
 .save-button:hover {
   background-color: #0056b3;
-}
-
-.error {
-  color: red;
-  font-size: 10px; /* Smaller size */
-  margin-top: 2px;
-  text-align: left;
 }

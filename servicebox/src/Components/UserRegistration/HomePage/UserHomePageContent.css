@@ -1,0 +1,69 @@
+/* Homepage content container */
+.userhomepagecontent-content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Search bar */
+.userhomepagecontent-search-container {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: white;
+  border-radius: 40px;
+  width: 100vw;
+  margin: 15px auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+.userhomepagecontent-search-input {
+  border: none;
+  outline: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 15px;
+  width: 100%; 
+}
+
+/* Services section */
+.userhomepagecontent-services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  width: 97vw;
+}
+
+/* Service item */
+.userhomepagecontent-service-item {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 100%;
+}
+
+/* Hover effect for service item */
+.userhomepagecontent-service-item:hover {
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for brightness */
+}
+
+/* Service links */
+.userhomepagecontent-service-link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.userhomepagecontent-service-link:hover {
+  text-decoration: underline;
+  color: #ffffff; /* Ensures text stays white when hovered over */
+}

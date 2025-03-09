@@ -1,21 +1,31 @@
 /* Navbar container */
-.navbar {
+.service-navbar {
     background-color: #333;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    /* padding: 12px 20px; */
+    width: 100%; /* Changed from 100vw to prevent scroll issues */
+    position: fixed; /* Keeps navbar fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Adds space below navbar so content isn’t hidden */
+body {
+    /* padding-top: 60px; */
 }
 
 /* ServiceProvider logo */
-.logo {
-    font-size: 20px;
+.service-logo {
+    font-size: 22px;
     font-weight: bold;
 }
 
 /* Navigation links */
-.nav-links {
+.service-nav-links {
     list-style: none;
     display: flex;
     align-items: center; /* Ensures vertical alignment */
@@ -24,37 +34,38 @@
 }
 
 /* Navigation items */
-.nav-links li {
-    margin-left: 10px; /* Space between items */
+.service-nav-links li {
+    margin-left: 15px; /* Space between items */
 }
 
 /* Navigation links styling */
-.nav-links a {
+.service-nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
-    padding: 8px 12px; /* Adjusted padding */
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
     transition: background 0.3s ease-in-out;
 }
 
-.nav-links a:hover {
+.service-nav-links a:hover {
     background-color: #575757;
-    border-radius: 5px;
 }
 
 /* Profile icon */
-.profile-icon {
+.service-profile-icon {
     display: flex;
     align-items: center;
 }
 
-.profile-icon .nav-link {
+/* Profile link */
+.service-profile-icon .service-nav-link {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 10px;
+    transition: transform 0.2s;
 }
 
-.profile-icon .nav-link:hover {
-    background-color: transparent;
+.service-profile-icon .service-nav-link:hover {
+    transform: scale(1.1);
 }
-

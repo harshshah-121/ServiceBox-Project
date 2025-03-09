@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./ContactUs.css"; // Make sure to style it properly
+import "./ContactUs.css"; // Ensure to style it properly
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -55,12 +55,12 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-us-container">
-      <h2>Contact Us</h2>
+    <div className="usercontactus-container">
+      <h2 className="u_heading">Contact Us</h2>
       {responseMessage && <p className="response-message">{responseMessage}</p>}
 
-      <form onSubmit={handleSubmit} className="contact-us-form">
-        <label>Full Name:</label>
+      <form onSubmit={handleSubmit} className="usercontactus-form">
+        <label className="u_name">Full Name:</label>
         <input
           type="text"
           name="full_name"
@@ -69,7 +69,7 @@ const ContactUs = () => {
           required
         />
 
-        <label>Email:</label>
+        <label className="u_name">Email:</label>
         <input
           type="email"
           name="email"
@@ -78,7 +78,7 @@ const ContactUs = () => {
           required
         />
 
-        <label>Phone Number:</label>
+        <label className="u_name">Phone Number:</label>
         <input
           type="tel"
           name="phone_number"
@@ -87,7 +87,7 @@ const ContactUs = () => {
           required
         />
 
-        <label>Message:</label>
+        <label className="u_name">Message:</label>
         <textarea
           name="message"
           value={formData.message}

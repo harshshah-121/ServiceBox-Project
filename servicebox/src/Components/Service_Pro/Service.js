@@ -60,7 +60,7 @@ const Service = () => {
   
 
   return (
-    <div className="form-container">
+    <div className="service-form-container">
       <h2>Service Provider Registration</h2>
       <form onSubmit={handleSubmit}>
         <label>

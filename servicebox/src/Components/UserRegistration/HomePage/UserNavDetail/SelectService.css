@@ -1,68 +1,77 @@
-.select-service-container {
-    padding: 20px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 40px;
-  }
-  
-  .services-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-  
-  .service-item {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .service-item:hover {
-    background-color: #e3e3e3;
-    transform: translateY(-5px);
-  }
-  
-  .service-detail-container {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .service-detail-container h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .service-detail-container p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    font-weight: 500;
-  }
-  
-  .service-detail-container ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .service-detail-container ul li {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #444;
-    padding-bottom: 10px;
-  }
-  
-  .service-detail-container ul li:before {
-    content: '✔';
-    margin-right: 10px;
-    color: #4CAF50;
-  }
-  
+.userselectservice-container {
+  padding: 30px;
+  width: 100vw;
+}
+
+.service-title {
+  font-size: 28px;
+  /* margin-bottom: 30px; */
+  text-align: center;
+  font-weight: bold;
+}
+
+.userselectservice-services-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 services per row */
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 0 15px;
+}
+
+.userselectservice-service-item {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userselectservice-service-item:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-6px);
+}
+
+.userselectservice-service-detail-container {
+  /* margin-top: 40px; */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+.userselectservice-service-detail-container h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.userselectservice-service-detail-container p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  font-weight: 500;
+}
+
+.userselectservice-service-detail-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.userselectservice-service-detail-container ul li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  padding-bottom: 10px;
+}
+
+.userselectservice-service-detail-container ul li:before {
+  content: '✔';
+  margin-right: 10px;
+  color: #28a745;
+  font-size: 18px;
+}

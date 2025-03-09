@@ -21,7 +21,7 @@ const UserLogin = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.user_name.trim()) newErrors.user_name = "User  name is required";
+    if (!formData.user_name.trim()) newErrors.user_name = "User name is required";
     if (!formData.user_email.trim()) {
       newErrors.user_email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.user_email)) {
@@ -49,7 +49,7 @@ const UserLogin = () => {
       try {
         const res = await axios.post("http://127.0.0.1:8000/user/register/", formData);
         if (res.status === 201 || res.status === 200) {
-          alert("User  registered successfully!");
+          alert("User registered successfully!");
           navigate("/login"); // Redirect to login page
         }
       } catch (error) {
@@ -62,33 +62,33 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div className="user_signup-container">
       <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} className="signup-form">
-        <div className="form-group">
+      <form onSubmit={handleSubmit} className="user_signup-form">
+        <div className="user_form-group">
           <label>User Name</label>
-          <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} placeholder="Username" required />
-          {errors.user_name && <small className="error">{errors.user_name}</small>}
+          <input type="text" className="u_name" name="user_name" value={formData.user_name} onChange={handleChange} placeholder="Username" required />
+          {errors.user_name && <small className="user_error">{errors.user_name}</small>}
         </div>
-        <div className="form-group">
+        <div className="user_form-group">
           <label>Email Address</label>
-          <input type="email" name="user_email" value={formData.user_email} onChange={handleChange} placeholder="Enter email" required />
-          {errors.user_email && <small className="error">{errors.user_email}</small>}
+          <input type="email" className="u_email" name="user_email" value={formData.user_email} onChange={handleChange} placeholder="Enter email" required />
+          {errors.user_email && <small className="user_error">{errors.user_email}</small>}
         </div>
-        <div className="form-group">
+        <div className="user_form-group">
           <label>Password</label>
-          <input type="password" name="user_password" value={formData.user_password} onChange={handleChange} placeholder="Enter password" required />
-          {errors.user_password && <small className="error">{errors.user_password}</small>}
+          <input type="password" className="u_password" name="user_password" value={formData.user_password} onChange={handleChange} placeholder="Enter password" required />
+          {errors.user_password && <small className="user_error">{errors.user_password}</small>}
         </div>
-        <div className="form-group">
+        <div className="user_form-group">
           <label>Confirm Password</label>
-          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm password" required />
-          {errors.confirmPassword && <small className="error">{errors.confirmPassword}</small>}
+          <input type="password" className="u_confirm-password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm password" required />
+          {errors.confirmPassword && <small className="user_error">{errors.confirmPassword}</small>}
         </div>
-        <button type="submit" className="signup-button" disabled={loading}>{loading ? "Signing Up..." : "Sign Up"}</button>
+        <button type="submit" className="user_signup-button" disabled={loading}>{loading ? "Signing Up..." : "Sign Up"}</button>
       </form>
-      <div className="already-signed-in">
-        <p>Already Signed In? <a href="/login">Click here to log in</a></p>
+      <div className="user_already-signed-in">
+        <p className="user_sign">Already Signed In? <a href="/login" className="user_href">Click here to log in</a></p>
       </div>
     </div>
   );

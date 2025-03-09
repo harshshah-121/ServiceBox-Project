@@ -1,71 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .admin-main-content {
-  width: 82vw;
+  width: 88vw; /* Increased width to give more space */
   background-color: #f5f7fa;
   transition: margin-left 0.3s ease;
+  padding: 10px; /* Added padding */
 }
 
-.content-header {
-  margin-bottom: 20px;
+.admin-content-header {
   text-align: center;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
-.content-header h1 {
-  font-size: 22px;
+.admin-content-header h1 {
+  font-size: 20px; /* Reduced font size */
   font-weight: bold;
   color: #2c3e50;
-  margin-bottom: 8px;
+  margin-bottom: 5px; /* Reduced spacing */
   text-decoration: underline;
 }
 
-.content-header p {
-  font-size: 20px;
+.admin-content-header p {
+  font-size: 18px; /* Reduced font size */
   color: #7f8c8d;
-  align-items: center;
 }
 
-.content {
+.admin-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Adjusted grid */
+  gap: 15px; /* Reduced gap */
 }
 
-.content-card {
+.admin-content-card {
   background-color: #fff;
   border-radius: 5px;
-  padding: 15px;
+  padding: 10px; /* Reduced padding */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.content-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+.admin-content-card:hover {
+  transform: translateY(-3px); /* Slightly reduced hover effect */
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-.content-card h2 {
-  font-size: 15px;
+.admin-content-card h2 {
+  font-size: 18px; /* Reduced font size */
   color: #34495e;
-  margin-bottom: 8px;
+  margin-bottom: 5px; /* Reduced spacing */
 }
 
-.content-card p {
+.admin-content-card p {
   font-size: 18px;
-  font-weight: bolder;
+  font-weight: bold;
   color: #2ecc71;
 }
 
-.medium-graph {
-  margin: 10px;
+.admin-medium-graph {
+  margin-top: 20px; /* Reduced top margin */
   padding: 5px;
-  width: 95%;
+  width: 100%;
+  min-height: 250px; /* Ensures graph visibility */
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* Allows scrolling if necessary */
 }
 
-.medium-graph h3 {
+.admin-medium-graph h3 {
   text-align: center;
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 18px; /* Reduced font size */
+  margin-bottom: 10px; /* Reduced spacing */
   color: #333; 
 }

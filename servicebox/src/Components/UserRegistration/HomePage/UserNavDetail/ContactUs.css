@@ -1,98 +1,99 @@
-.contact-us-container {
-    max-width: 500px; /* Keeping the same width */
-    margin: 50px auto;
-    padding: 25px;
-    background: #fff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif; /* Stylish Font */
-  }
-  
-  /* Heading */
-  h2 {
-    margin-bottom: 20px;
-    font-size: 28px; /* Bigger font */
-    font-weight: 700; /* Bold */
-    color: #007bff;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-  }
-  
-  /* Form Styling */
-  .contact-us-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Labels */
-  label {
-    text-align: left;
-    font-size: 18px; /* Bigger font */
-    font-weight: 600;
-    margin: 12px 0 6px;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  /* Inputs and Textarea */
-  input, textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 18px; /* Bigger font */
-    font-weight: 500;
-    margin-bottom: 15px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    transition: 0.3s ease-in-out;
-  }
-  
-  /* Input focus effect */
-  input:focus, textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.4);
-  }
-  
-  /* Textarea */
-  textarea {
-    height: 120px;
-    resize: none;
-  }
-  
-  /* Button */
-  button {
-    background: #007bff;
-    color: white;
-    padding: 12px;
-    font-size: 20px; /* Bigger font */
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    text-transform: uppercase;
-    font-family: 'Poppins', sans-serif;
-    transition: 0.3s ease-in-out;
-  }
-  
-  /* Button hover effect */
-  button:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  /* Disabled Button */
-  button:disabled {
-    background: gray;
-    cursor: not-allowed;
-  }
-  
-  /* Response Message */
-  .response-message {
-    margin-bottom: 15px;
-    font-size: 18px; /* Bigger font */
-    font-weight: 700;
-    color: green;
-    text-transform: capitalize;
-  }
+.usercontactus-container {
+  max-width: 500px; /* Optimized width */
+  width: 40vw;
+  margin: 20px auto; /* Centering */
+  padding: 25px; /* Reduced padding */
+  background: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Ensures content stays inside */
+}
+
+/* Heading */
+.u_heading {
+  font-size: 24px; /* Adjusted font size */
+  font-weight: 700;
+  color: #007bff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+/* Form Styling */
+.usercontactus-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.u_name {
+  text-align: left;
+  font-size: 18px; /* Optimized font size */
+  margin: 10px 0 5px;
+  color: #333;
+  /* font-weight: 600; */
+}
+
+/* Inputs and Textarea */
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+}
+
+/* Input focus effect */
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Textarea */
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Button */
+button {
+  background: #007bff;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: 0.2s;
+  margin-top: 15px;
+}
+
+/* Button hover effect */
+button:hover {
+  background: #0056b3;
+  transform: scale(1.05); /* Minimal scaling */
+}
+
+/* Disabled Button */
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* Response Message */
+.response-message {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: green;
+  text-transform: capitalize;
+}

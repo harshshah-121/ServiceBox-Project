@@ -1,33 +1,45 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import './UserHomePageContent.css';
 
 const UserHomePageContent = () => {
   return (
     <div>
-      <div className="homepage-content">
-        <div className="search-container">
-          {/* //<img src='./Search.png' alt='logo'></img>  */}
-          <input type="text" placeholder="Search for services..." className="search-input" />
+      <div className="userhomepagecontent-content">
+        <div className="userhomepagecontent-search-container">
+          {/* <img src='./Search.png' alt='logo'></img> */}
+          <input
+            type="u_text"
+            placeholder="Search for services..."
+            className="userhomepagecontent-search-input"
+          />
         </div>
       </div>
 
-      <div className="services-list">
-        {/* //Make the service items links to the description page with a serviceId */}
-        <div className="service-item">
-          <Link to="/services/1" className="service-link">Furniture</Link>
+      <div className="userhomepagecontent-services-list">
+        {/* Make the service items links to the description page with a serviceId */}
+        <div className="userhomepagecontent-service-item">
+          <a href="/services/1" className="userhomepagecontent-service-link">
+            Furniture
+          </a>
         </div>
-        <div className="service-item">
-          <Link to="/services/2" className="service-link">Carpentry</Link>
+        <div className="userhomepagecontent-service-item">
+          <a href="/services/2" className="userhomepagecontent-service-link">
+            Carpentry
+          </a>
         </div>
-        <div className="service-item">
-          <Link to="/services/3" className="service-link">Gardening</Link>
+        <div className="userhomepagecontent-service-item">
+          <a href="/services/3" className="userhomepagecontent-service-link">
+            Gardening
+          </a>
         </div>
-        <div className="service-item">
-          <Link to="/services/4" className="service-link">Plumbing</Link>
+        <div className="userhomepagecontent-service-item">
+          <a href="/services/4" className="userhomepagecontent-service-link">
+            Plumbing
+          </a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserHomePageContent
+export default UserHomePageContent;

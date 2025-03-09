@@ -1,0 +1,79 @@
+/* General Layout */
+.service-edit-profile-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar */
+.service-sidebar {
+    width: 220px;
+    background: #2c3e50;
+    color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh; /* Full height */
+    position: fixed; 
+    /* top: 0; */
+    left: 0;
+    padding-top: 50px;
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+/* Sidebar Menu */
+.service-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-sidebar li {
+    margin-bottom: 10px;
+}
+
+/* Sidebar Links */
+.service-sidebar a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.service-sidebar a:hover {
+    background: #34495e;
+    padding-left: 18px;
+}
+
+/* Active Link */
+.service-sidebar a.service-active {
+    background: #1abc9c;
+    font-weight: bold;
+}
+
+/* Main Content */
+.service-profile-content {
+    flex-grow: 1;
+    background: white;
+    padding: 20px;
+    margin-left: 220px; /* Ensure content is fully visible */
+    /* width: calc(100% - 220px); Adjust dynamically */
+    width: 100%;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.service-profile-content h2 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+/* Sidebar Icons */
+.service-icon {
+    font-size: 18px;
+}

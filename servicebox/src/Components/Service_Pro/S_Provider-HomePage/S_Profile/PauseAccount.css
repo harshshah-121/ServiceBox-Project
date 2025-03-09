@@ -1,40 +1,47 @@
 /* Pause Account Container */
-.pause-account-container {
+.s-pause-account-container {
     background: #fff;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%;
+    width: 84vw;  
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin: auto;
+    margin-top: 50px;
 }
 
 /* Heading */
 h2 {
     color: #2c3e50;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* Description */
 p {
     color: #666;
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 18px;  /* Slightly smaller for better proportion */
+    margin-bottom: 15px;
 }
 
-/* Pause Button */
+/* Pause Button - Now Smaller */
 .pause-btn {
     background-color: #e74c3c;
     color: white;
-    padding: 12px 15px;
+    padding: 10px 20px; /* Reduced padding */
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     font-weight: bold;
     cursor: pointer;
-    width: 100%;
+    width: auto; /* Adjusted width */
+    min-width: 150px; /* Ensuring it doesn't get too small */
     transition: all 0.3s ease-in-out;
+    text-align: center;
 }
 
 .pause-btn:hover {
