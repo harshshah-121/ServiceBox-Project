@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import './UserHomePage .css';
 import mylogo from "../images/logo.png";
-import axios from 'axios';
 
 
 const UserHomePage = ({ children }) => {
@@ -44,11 +43,7 @@ const UserHomePage = ({ children }) => {
         </li>
         <li className="nav-item profile-icon">
           <Link to="/edit-profile" className="nav-link">
-              {profilePic ? (
-                <img src={profilePic} alt="Profile" className="profile-pic" />
-              ) : (
-                <FaUserCircle size={24} />
-              )}
+            <FaUserCircle size={24} />
           </Link>
         </li>
       </ul>

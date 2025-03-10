@@ -1,5 +1,5 @@
 /* Full-page background styling */
-.login-container {
+.s_login-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,9 +8,9 @@
 }
 
 /* Login form styling */
-.login-form {
+.s_login-form {
     background: white;
-    padding: 40px; /* Increased padding */
+    padding: 40px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     width: 400px; /* Increased width */
@@ -18,7 +18,7 @@
 }
 
 /* Heading styling */
-.Heading {
+.s_heading {
     margin-bottom: 25px;
     color: #333;
     font-size: 28px; 
@@ -26,13 +26,13 @@
 }
 
 /* Input field container */
-.input-group {
+.s_input-group {
     margin-bottom: 20px;
     text-align: left;
 }
 
 /* Input field labels */
-.input-group label {
+.s_label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
@@ -40,7 +40,7 @@
 }
 
 /* Input fields */
-.input-group input {
+.s_input {
     width: 100%;
     padding: 12px; /* Larger input fields */
     border: 2px solid #bbb;
@@ -49,14 +49,14 @@
 }
 
 /* Error messages */
-.error {
+.s_error {
     color: red;
     font-size: 14px; /* Slightly bigger for visibility */
     margin-top: 5px;
 }
 
 /* Login button */
-.login-button {
+.s_login-button {
     width: 100%;
     padding: 14px; /* Bigger button */
     background-color: #007bff;
@@ -70,6 +70,6 @@
 }
 
 /* Hover effect for button */
-.login-button:hover {
+.s_login-button:hover {
     background-color: #0056b3;
 }

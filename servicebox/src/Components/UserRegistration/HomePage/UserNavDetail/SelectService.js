@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SelectService.css';
 
-const SelectServicePage = () => {
+const SelectService = () => {
   const [selectedService, setSelectedService] = useState(null); // State to store selected service details
 
   const services = [
@@ -100,15 +100,15 @@ const SelectServicePage = () => {
   };
 
   return (
-    <div className="select-service-container">
-      <h2>Our Services</h2>
+    <div className="userselectservice-container">
+      <h2 className='service-title'>Our Services</h2>
 
       {/* List of services */}
-      <div className="services-list">
+      <div className="userselectservice-services-list">
         {services.map((service) => (
           <div
             key={service.id}
-            className="service-item"
+            className="userselectservice-service-item"
             onClick={() => handleServiceClick(service)} // Click on service to show details
           >
             <h3>{service.name}</h3>
@@ -118,7 +118,7 @@ const SelectServicePage = () => {
 
       {/* Conditionally render the selected service's details */}
       {selectedService && (
-        <div className="service-detail-container">
+        <div className="userselectservice-service-detail-container">
           <h2>{selectedService.name}</h2>
           <ul>
             {selectedService.description.map((point, index) => (
@@ -131,4 +131,4 @@ const SelectServicePage = () => {
   );
 };
 
-export default SelectServicePage;
+export default SelectService;

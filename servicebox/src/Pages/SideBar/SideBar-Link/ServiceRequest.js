@@ -40,7 +40,7 @@ const ServiceRequest = () => {
                 <li><strong>Status:</strong> The current status of the request (e.g., Pending, In Progress, Completed).</li>
                 <li><strong>Request Date:</strong> The date when the service request was created.</li>
             </ul>
-            <h3>Sample Data:</h3>
+            <h3 className="servicerequest">Sample Data:</h3>
             <table className="service-table">
                     <tr>
                         <th>Request ID</th>

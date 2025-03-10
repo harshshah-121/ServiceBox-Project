@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './S_login.css';
+import "./S_login.css";
 
 const S_Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -28,7 +28,7 @@ const S_Login = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-        alert("Login Succesfully!");
+      alert("Login Successfully!");
       console.log("Form Submitted", formData);
       navigate("/home-page");
       // Proceed with login logic
@@ -36,35 +36,37 @@ const S_Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="Heading">Service Provider Login</h2>
+    <div className="s_login-container">
+      <form className="s_login-form" onSubmit={handleSubmit}>
+        <h2 className="s_heading">Service Provider Login</h2>
         
-        <div className="input-group">
-          <label>Email</label>
+        <div className="s_input-group">
+          <label className="s_label">Email</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
+            className="s_input"
           />
-          {errors.email && <span className="error">{errors.email}</span>}
+          {errors.email && <span className="s_error">{errors.email}</span>}
         </div>
 
-        <div className="input-group">
-          <label>Password</label>
+        <div className="s_input-group">
+          <label className="s_label">Password</label>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
+            className="s_input"
           />
-          {errors.password && <span className="error">{errors.password}</span>}
+          {errors.password && <span className="s_error">{errors.password}</span>}
         </div>
 
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="s_login-button">Login</button>
       </form>
     </div>
   );
