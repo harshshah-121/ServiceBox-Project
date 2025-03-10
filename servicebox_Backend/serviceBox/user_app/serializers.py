@@ -4,6 +4,8 @@ from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from .models import User
 from django.contrib.auth.hashers import check_password
+from django.conf import settings
+import os
 
 
 
@@ -164,3 +166,22 @@ class ContactUsSerializer(serializers.Serializer):
         if not value.isdigit():
             raise serializers.ValidationError("Phone number must contain only digits.")
         return value
+
+
+class ProfilePicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['profile_pic']
+
+    def validate_profile_pic(self, value):
+        if not value.content_type.startswith('image'):
+            raise serializers.ValidationError("Only image files are allowed.")
+        return value
+    
+    def update(self, instance, validated_data):
+        if instance.profile_pic:
+            old_pic_path = os.path.join(settings.MEDIA_ROOT, str(instance.profile_pic))
+            if os.path.exists(old_pic_path):
+                os.remove(old_pic_path)
+
+        return super().update(instance, validated_data)

@@ -61,11 +61,13 @@
 
 .userhomepage_classname-profile-icon .userhomepage_classname-nav-link:hover {
   color: #007bff;
-  transform: scale(1.4);
+  transform: scale(1.4); /* Pop effect on icon */
 }
 
-/* Homepage content */
-.userhomepage_classname-content {
+
+
+.homepage-content {
+  margin-left: 500px;
   text-align: center;
   margin-top: 20px;
 }

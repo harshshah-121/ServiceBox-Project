@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from .models import ServiceProvider
+from django.contrib.auth.hashers import make_password
 
-class ServiceProviderSerializer(serializers.ModelSerializer):
+
+class ServiceProvider_Basic_Registration_Serializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True, required=True)
 
     class Meta:
@@ -23,3 +25,40 @@ class ServiceProviderSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+
+class ServiceProvider_Main_Registration_Serializer(serializers.ModelSerializer):
+    aadharCard = serializers.ImageField(required=False)
+    electricityBill = serializers.ImageField(required=False)
+    Policeclearancecertificate = serializers.ImageField(required=False)
+
+    class Meta:
+        model = ServiceProvider
+        fields = ['address', 'gender', 'status', 'aadharCard', 'electricityBill', 'Policeclearancecertificate']
+
+    def validate(self, data):
+        print(data)
+        return data
+    def validate_gender(self, value):
+        if value not in ["Male", "Female", "Other"]:
+            raise serializers.ValidationError("Invalid gender. Choose from Male, Female, or Other.")
+        return value
+
+    def validate_status(self, value):
+        if value not in ["Active", "In Active"]: 
+            raise serializers.ValidationError("Invalid status. Choose from Active or In Active.")
+        return value
+    
+    # def validate_aadharCard(self, value):
+    #     if not value.content_type.startswith('image'):
+    #         raise serializers.ValidationError("Only image files are allowed.")
+    #     return value
+    
+    # def validate_electricityBill(self, value):
+    #     if not value.content_type.startswith('image'):
+    #         raise serializers.ValidationError("Only image files are allowed.")
+    #     return value
+    
+    # def validate_policeClearanceCertificate(self, value):
+    #     if not value.content_type.startswith('image'):
+    #         raise serializers.ValidationError("Only image files are allowed.")
+    #     return value

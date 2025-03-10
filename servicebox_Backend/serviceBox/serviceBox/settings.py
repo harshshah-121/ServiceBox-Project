@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -197,6 +198,10 @@ EMAIL_HOST_PASSWORD = 'lmol vumj jhvz kcgb'
 
 
 ADMIN_EMAIL = 'yashsolanki9265@gmail.com'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000",  # Frontend URL

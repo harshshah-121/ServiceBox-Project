@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+
 class ServiceProviderManager(BaseUserManager):
     def create_user(self, email, firstname, lastname, password=None):
         if not email:
@@ -23,18 +24,20 @@ class ServiceProvider(AbstractBaseUser):
     email = models.EmailField(unique=True)
     password=models.CharField(max_length=100)
     address=models.TextField(null=True, blank=True)
-    aadhar_number=models.CharField(max_length=12, null=True, blank=True)
+    aadharCard=models.FileField(upload_to="identification_docs/", null=True, blank=True)
+    electricityBill=models.FileField(upload_to="identification_docs/", null=True, blank=True)
+    Policeclearancecertificate=models.FileField(upload_to="identification_docs/", null=True, blank=True)
     phone_number=models.CharField(max_length=15, null=True, blank=True)
     date_of_birth=models.DateField(null=True, blank=True)
     age=models.IntegerField(null=True, blank=True)
     gender=models.CharField(max_length=10,choices=(('Male','Male'),('Female','Female'),('Other','Other')))
     registration_date=models.DateField(auto_now_add=True)
-    profile_pic=models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    profile_pic=models.FileField(upload_to='profile_pics/', null=True, blank=True)
+    status = models.CharField(max_length=50, choices=[("Active", "Active"), ("In Active", "In Active")], default="Active")
+    # is_admin = models.BooleanField(default=False)
     
-    class meta:
-        db_table='serviceProvider'
+    class Meta:
+        db_table='serviceprovider'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['firstname', 'lastname']
 
