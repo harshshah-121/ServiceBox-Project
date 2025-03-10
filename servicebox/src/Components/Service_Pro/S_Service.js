@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Service.css";
+import axios from "axios";
+import "./S_Service.css";
 
-const Service = () => {
+
+const S_Service = () => {
   const [formData, setFormData] = useState({
     address: "",
     gender: "",
@@ -14,36 +16,28 @@ const Service = () => {
 
   const navigate = useNavigate(); // Initialize navigate function
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
-    // Create FormData object to send files properly
-    const formDataToSend = new FormData();
-    formDataToSend.append("address", formData.address);
-    formDataToSend.append("gender", formData.gender);
-    formDataToSend.append("status", formData.status);
-    formDataToSend.append("aadharCard", formData.aadharCard);
-    formDataToSend.append("electricityBill", formData.electricityBill);
-    formDataToSend.append("Policeclearancecertificate", formData.Policeclearancecertificate);
-  
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/service-provider/", { 
-        method: "POST",
-        body: formDataToSend, 
-      });
-  
-      if (response.ok) {
-        alert("Form submitted successfully!");
-        console.log("Form Data:", formData);
-        navigate("/s-login"); // Redirect after success
-      } else {
-        alert("Failed to submit form");
-        console.error("Error:", await response.json());
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("An error occurred. Please try again.");
-    }
+    
+    axios
+      .post("service_provider/main_register/", formData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((response) => {
+        alert("Registration Successful!");
+        setFormData({
+          address: "",
+          gender: "",
+          status: "",
+          aadharCard: "",
+          electricityBill: "",
+          Policeclearancecertificate:"",
+        });
+        navigate("/s-login");
+      })
+      .catch((error) => console.log("Registration error:", error));
+
   };
 
   const handleChange = (e) => {
@@ -53,11 +47,8 @@ const Service = () => {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
-    if (files.length > 0) {
-      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
-    }
+    setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
   };
-  
 
   return (
     <div className="service-form-container">
@@ -113,4 +104,4 @@ const Service = () => {
   );
 };
 
-export default Service;
+export default S_Service;

@@ -12,10 +12,19 @@ const S_Registration = () => {
     confirm_password: "",
   });
 
-  const navigate = useNavigate(); 
+  const [error, setError] = useState(""); // State to handle password error
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.password !== formData.confirm_password) {
+      setError("Passwords do not match!");
+      return;
+    }
+
+    setError(""); // Clear error if passwords match
 
     axios
       .post("service_provider/register/", formData, {
@@ -31,7 +40,7 @@ const S_Registration = () => {
           password: "",
           confirm_password: "",
         });
-        navigate("/service");
+        navigate("/s-service");
       })
       .catch((error) => console.log("Registration error:", error));
   };
@@ -104,6 +113,8 @@ const S_Registration = () => {
             required
           />
         </label>
+
+        {error && <p style={{ color: "red" }}>{error}</p>} {/* Show error if passwords do not match */}
 
         <button type="submit">Submit</button>
       </form>

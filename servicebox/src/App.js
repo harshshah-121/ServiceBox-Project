@@ -26,6 +26,7 @@ import BookingHistory from "./Components/UserRegistration/UserProfileManage/Book
 import UserHomePageContent from "./Components/UserRegistration/HomePage/UserHomePageContent";
 import S_Registration from "./Components/Service_Pro/S_Registration";
 // import Service from "./Components/Service_Pro/Service";
+import S_Service from "./Components/Service_Pro/S_Service";
 import S_Login from "./Components/Service_Pro/S_Login";
 import S_Navbar from "./Components/Service_Pro/S_Provider-HomePage/S_Navbar";
 import S_EditProfile from "./Components/Service_Pro/S_Provider-HomePage/S_Profile/S_EditProfile";
@@ -77,6 +78,7 @@ const App = () => {
                 <Route path="/user-booking-history" element={<UserHomePage><ProfileManagement ><BookingHistory /></ProfileManagement></UserHomePage>} />
                 {/* <Route path='/service' element={<Service />}></Route> */}
                 <Route path='/s-registration' element={<S_Registration />}></Route>
+                <Route path='/s-service' element={<S_Service />}></Route>
                 <Route path='/s-login' element={<S_Login />}></Route>
                 <Route path='/s-home-page' element={<S_Navbar />}></Route>
                 <Route path='/s-edit_profile' element={<S_Navbar><S_EditProfile /></S_Navbar>}></Route>
