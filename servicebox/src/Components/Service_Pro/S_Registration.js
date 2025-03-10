@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "./S_Registration.css";
 import axios from "axios";
 
@@ -12,48 +12,28 @@ const S_Registration = () => {
     confirm_password: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // Initialize navigate function
-
-  const validateForm = () => {
-    const errors = {};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!formData.firstname.trim()) errors.firstname = "First Name is required";
-    if (!formData.lastname.trim()) errors.lastname = "Last Name is required";
-    if (!emailRegex.test(formData.email)) errors.email = "Invalid email format";
-    if (formData.password.length < 6)
-      errors.password = "Password must be at least 6 characters long";
-    if (formData.password !== formData.confirm_password)
-      errors.confirm_password = "Passwords do not match";
-
-    setErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return; 
-    }
-  
-    axios.post("service_provider/register/", formData, {
-        headers: { "Content-Type": "application/json" },  
-        withCredentials: true, 
+
+    axios
+      .post("service_provider/register/", formData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       })
-      .then(response => {
+      .then((response) => {
         alert("Registration Successful!");
         setFormData({
           firstname: "",
           lastname: "",
           email: "",
-          password: "", 
+          password: "",
           confirm_password: "",
         });
-        navigate("/service"); // Redirect to service page
+        navigate("/service");
       })
-      .catch(error => console.log("Registration error:", error));
+      .catch((error) => console.log("Registration error:", error));
   };
 
   const handleChange = (e) => {
@@ -62,62 +42,67 @@ const S_Registration = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="service-form-container">
       <h2>Registration Form</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="f_name">
           First Name:
           <input
             type="text"
             name="firstname"
+            className="input_name"
             value={formData.firstname}
             onChange={handleChange}
+            required
           />
-          {errors.firstname && <p className="error">{errors.firstname}</p>}
         </label>
 
-        <label>
+        <label className="f_name">
           Last Name:
           <input
             type="text"
             name="lastname"
+            className="input_name"
             value={formData.lastname}
             onChange={handleChange}
+            required
           />
-          {errors.lastname && <p className="error">{errors.lastname}</p>}
         </label>
 
-        <label>
+        <label className="f_name">
           Email:
           <input
             type="email"
             name="email"
+            className="input_name"
             value={formData.email}
             onChange={handleChange}
+            required
           />
-          {errors.email && <p className="error">{errors.email}</p>}
         </label>
 
-        <label>
+        <label className="f_name">
           Password:
           <input
             type="password"
             name="password"
+            className="input_name"
             value={formData.password}
             onChange={handleChange}
+            required
           />
-          {errors.password && <p className="error">{errors.password}</p>}
         </label>
 
-        <label>
+        <label className="f_name">
           Confirm Password:
           <input
             type="password"
             name="confirm_password"
+            className="input_name"
             value={formData.confirm_password}
             onChange={handleChange}
+            required
           />
-          {errors.confirm_password && <p className="error">{errors.confirm_password}</p>}
         </label>
 
         <button type="submit">Submit</button>

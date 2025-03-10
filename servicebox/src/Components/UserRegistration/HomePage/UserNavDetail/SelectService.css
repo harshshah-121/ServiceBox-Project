@@ -5,7 +5,7 @@
 
 .service-title {
   font-size: 28px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   text-align: center;
   font-weight: bold;
 }
@@ -37,7 +37,7 @@
 }
 
 .userselectservice-service-detail-container {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;

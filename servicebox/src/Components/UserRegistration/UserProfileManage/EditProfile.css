@@ -1,20 +1,23 @@
 .user-profile-container {
-  /* width: 90%; */
   max-width: 600px;
   margin: auto;
-  padding: 20px; 
+  padding: 15px; /* Reduced padding */
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-family: "Poppins", sans-serif;
+  
+  /* Fix for form overflowing */
+  max-height: 90vh; /* Ensures form fits screen */
+  overflow-y: auto; /* Enables scrolling if content is too long */
 }
 
 /* Title */
 .user_edit-profile {
-  font-size: 22px;
+  font-size: 20px; /* Reduced font */
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px; /* Reduced margin bottom */
+  margin-bottom: 15px;
   color: #333;
 }
 
@@ -22,51 +25,16 @@
 .user-editprofile {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Reduced gap for compactness */
+  gap: 6px; /* Reduced gap */
 }
 
 /* Labels */
-.user_name{
+.usr_name, .usr_email, .usr_phoneno, .usr_address, 
+.usr_Age, .usr_gender, .usr_profilepic {
   font-weight: bold;
-  font-size: 16px; /* Smaller font size */
+  font-size: 14px; /* Smaller font */
   color: #444;
-  margin-bottom: -10px;
-}
-.user_email{
-  font-weight: bold;
-  font-size: 16px; /* Smaller font size */
-  color: #444;
-  margin-bottom: -10px;
-}
-.user_phoneno{
-  font-weight: bold;
-  font-size: 16px; /* Smaller font size */
-  color: #444;
-  margin-bottom: -10px;
-}
-.user_address{
-  font-weight: bold;
-  font-size: 16px; /* Smaller font size */
-  color: #444;
-  margin-bottom: -10px;
-}
-.user_Age{
-  font-weight: bold;
-  font-size: 16px; /* Smaller font size */
-  color: #444;
-  margin-bottom: -10px;
-}
-.user_gender{
-  font-weight: bold;
-  font-size: 16px; /* Smaller font size */
-  color: #444;
-  margin-bottom: -9px;
-}
-.user_profilepic{
-  font-weight: bold;
-  font-size: 16px;
-  color: #444;
-  margin-bottom: -12px;
+  margin-bottom: -5px;
 }
 
 /* Input Fields */
@@ -76,31 +44,24 @@ input[type="email"],
 input[type="number"],
 textarea,
 select {
-  /* width: 100%; */
   padding: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: medium; 
+  /* font-size: 14px; */
   box-sizing: border-box;
 }
 
 /* Textarea */
 textarea {
-  height: 60px;
+  height: 50px; /* Reduced height */
   resize: none;
-}
-
-/* Error Messages */
-.error {
-  color: red;
-  font-size: 12px; /* Smaller error font */
-  margin-top: 5px;
 }
 
 /* Profile Picture Preview */
 .profile-pic-preview {
-  max-width: 80px; /* Reduced size */
-  margin-top: 10px;
+  max-width: 50px; /* Reduced size */
+  max-height: 50px;
+  margin-top: 5px;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
@@ -109,13 +70,15 @@ textarea {
 .save-button {
   background-color: #007bff;
   color: white;
-  padding: 10px;
+  padding: 8px; /* Smaller padding */
   border: none;
   border-radius: 4px;
-  font-size: 16px; /* Smaller button font */
+  font-size: 14px; /* Reduced font size */
   cursor: pointer;
   transition: background 0.3s;
   width: 100%;
+  position: sticky;
+  bottom: 0; /* Keep button always visible */
 }
 
 .save-button:hover {

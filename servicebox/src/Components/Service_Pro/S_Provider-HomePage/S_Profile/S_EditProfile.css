@@ -1,105 +1,79 @@
 /* General Layout */
-.edit-profile-container {
+.service-edit-profile-container {
     display: flex;
     min-height: 100vh;
     font-family: "Arial", sans-serif;
     background-color: #f4f4f4;
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 200px;
+/* Sidebar */
+.service-sidebar {
+    width: 220px;
     background: #2c3e50;
-    /* padding: 20px; */
     color: white;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh; /* Full height */
+    position: fixed; 
+    /* top: 0; */
+    left: 0;
+    padding-top: 50px;
+    overflow-y: auto; /* Scroll if content overflows */
 }
 
-.sidebar ul {
+/* Sidebar Menu */
+.service-sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.sidebar li {
-    margin-bottom: 15px;
+.service-sidebar li {
+    margin-bottom: 10px;
 }
 
-.sidebar a {
+/* Sidebar Links */
+.service-sidebar a {
     color: white;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 12px 15px;
     border-radius: 5px;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
-.sidebar a:hover {
+.service-sidebar a:hover {
     background: #34495e;
     padding-left: 18px;
 }
 
-/* Active Section Highlight */
-.sidebar a.active {
+/* Active Link */
+.service-sidebar a.service-active {
     background: #1abc9c;
     font-weight: bold;
 }
 
-/* Profile Content */
-.profile-content {
+/* Main Content */
+.service-profile-content {
     flex-grow: 1;
-    /* padding: 30px; */
     background: white;
+    padding: 20px;
+    margin-left: 220px; /* Ensure content is fully visible */
+    /* width: calc(100% - 220px); Adjust dynamically */
+    width: 100%;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings & Inputs */
-.profile-content h2 {
+/* Headings */
+.service-profile-content h2 {
     font-size: 22px;
     color: #2c3e50;
     margin-bottom: 15px;
 }
 
-.profile-content p {
-    font-size: 16px;
-    color: #666;
-    /* margin-bottom: 20px; */
-}
-
-.profile-content input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    /* margin: 10px 0; */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Buttons */
-.profile-content button {
-    background: #1abc9c;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.profile-content button:hover {
-    background: #16a085;
-}
-
 /* Sidebar Icons */
-.sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.icon {
+.service-icon {
     font-size: 18px;
 }
-

@@ -1,7 +1,8 @@
 .work-area-container {
-    max-width: 400px;
-    width: 90%;
+    /* max-width: 400px; */
+    width: 84vw;
     margin: auto;
+    height: 100vh;
     padding: 25px;
     background: #fff;
     border-radius: 8px;
@@ -22,6 +23,8 @@
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+    height: 50px;
+    width: 40vw;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
     font-size: 16px;
@@ -43,12 +46,13 @@
     color: white;
     padding: 10px 15px;
     border: none;
+    width: 40vw;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease-in-out;
 }
 
-.work-area-container button:hover {
+.work-area-container button:hover { 
     background-color: #219150;
 }
