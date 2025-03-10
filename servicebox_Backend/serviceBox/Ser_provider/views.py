@@ -17,7 +17,7 @@ class ServiceProvider_Main_Registration(APIView):
     def post(self, request):
         print(request.data)
         data=json.loads(request.data.get("form_data"))
-        data["aadharCard"]=request.FILES.get('aadharcard')
+        data["aadharCard"]=request.FILES.get('aadharCard')
         data["electricityBill"]=request.FILES.get('electricityBill')
         data["Policeclearancecertificate"]=request.FILES.get("Policeclearancecertificate")
 
