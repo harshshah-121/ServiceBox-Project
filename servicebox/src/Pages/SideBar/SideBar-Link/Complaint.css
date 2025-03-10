@@ -1,16 +1,17 @@
 .complaint {
     padding: 20px;
-    width: 82vw;
+    width: 86vw;
     /* height: 100vh; */
   }
   
   .complaint h2 {
     margin-bottom: 15px;
+    font-size: 30px;
   }
   
   .complaint p {
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 30px;
     line-height: 1.6;
   }
   
@@ -21,9 +22,12 @@
   
   .complaint ul li {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 30px;
   }
   
+  .complaintheading{
+    font-size: 30px;
+  }
   .complaint-table {
     width: 100%;
     border-collapse: collapse;
@@ -36,6 +40,7 @@
     border: 1px solid black;
     padding: 10px;
     text-align: left;
+    font-size: 30px;
   }
   
   .complaint-table th {

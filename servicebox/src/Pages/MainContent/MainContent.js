@@ -20,35 +20,35 @@ const data = [
 const MainContent = () => {
   return (
     <main className="admin-main-content">
-      <div className="content-header">
+      <div className="admin-content-header">
         <h1>Admin Dashboard</h1>
         <p>Welcome to the admin panel. Manage your users and service providers here.</p>
       </div>
 
-      <div className="content">
-        <div className="content-card">
+      <div className="admin-content">
+        <div className="admin-content-card">
           <h2>Total Users</h2>
           <p>1,230</p>
         </div>
-        <div className="content-card">
+        <div className="admin-content-card">
           <h2>Total Service Providers</h2>
           <p>320</p>
         </div>
-        <div className="content-card">
+        <div className="admin-content-card">
           <h2>Total Income</h2>
           <p>40000</p>
         </div>
-        <div className="content-card">
+        <div className="admin-content-card">
           <h2>Resolved Issues</h2>
           <p>280</p>
         </div>
-        <div className="content-card">
+        <div className="admin-content-card">
           <h2>Services Total</h2>
           <p>15+</p>
         </div>
       </div>
 
-      <div className="medium-graph">
+      <div className="admin-medium-graph">
         <h3>Bookings Overview (Full Year)</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>

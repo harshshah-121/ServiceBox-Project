@@ -88,7 +88,7 @@ const UserLogin = () => {
         <button type="submit" className="signup-button" disabled={loading}>{loading ? "Signing Up..." : "Sign Up"}</button>
       </form>
       <div className="already-signed-in">
-        <p>Already Signed In? <a href="/login">Click here to log in</a></p>
+        <p className="user-sign">Already Signed In? <a href="/login" className="user-href">Click here to log in</a></p>
       </div>
     </div>
   );

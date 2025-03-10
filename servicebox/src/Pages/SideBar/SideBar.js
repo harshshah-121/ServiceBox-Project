@@ -7,51 +7,51 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     alert("You have been logged out.");
-    navigate("/");
+    navigate("/admin");
   };
   return (
     <aside className="admin-sidebar">
-      <div className="sidebar-header">
-        <h2>Admin Panel</h2>
+      <div className="admin-sidebar-header">
+        <h2 className="admin-heading">Admin Panel</h2>
       </div>
-      <ul className="sidebar-menu">
+      <ul className="admin-sidebar-menu">
         <li>
-          <a href="/admin-dashboard" className="sidebar-link">
+          <a href="/admin-dashboard" className="admin-sidebar-link">
             Admin Dashboard
           </a>
         </li>
         <li>
-          <a href="/admin-manage-user" className="sidebar-link">
+          <a href="/admin-manage-user" className="admin-sidebar-link">
             Manage User
           </a>
         </li>
         <li>
-          <a href="/admin-manage-service-provider" className="sidebar-link">
+          <a href="/admin-manage-service-provider" className="admin-sidebar-link">
             Service Provider
           </a>
         </li>
         <li>
-          <a href="/admin-manage-service" className="sidebar-link">
+          <a href="/admin-manage-service" className="admin-sidebar-link">
             Service
           </a>
         </li>
         <li>
-          <a href="/admin-manage-service-request" className="sidebar-link">
+          <a href="/admin-manage-service-request" className="admin-sidebar-link">
             Service Request
           </a>
         </li>
         <li>
-          <a href="/admin-manage-complaint" className="sidebar-link">
+          <a href="/admin-manage-complaint" className="admin-sidebar-link">
             Complains
           </a>
         </li>
         <li>
-          <a href="/admin-manage-feedback" className="sidebar-link">
+          <a href="/admin-manage-feedback" className="admin-sidebar-link">
             Feedback
           </a>
         </li>
         <li>
-          <a onClick={handleLogout} className="sidebar-link" style={{ cursor: "pointer" }}>
+          <a onClick={handleLogout} className="admin-sidebar-link" style={{ cursor: "pointer" }}>
             Log Out
           </a>
         </li>

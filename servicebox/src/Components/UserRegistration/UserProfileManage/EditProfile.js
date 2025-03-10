@@ -9,13 +9,12 @@ const EditProfile = () => {
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     user_name: '',
-    // user_email: '',
     user_phone_number: '',
     user_address: '',
     user_gender: '',
     user_age: '',
-    profilePic: null,
-    profilePicPreview: "",
+    // profilePic: null,
+    // profilePicPreview: '',
   });
   const [message, setMessage] = useState("");
   // const [errors, setErrors] = useState({});
@@ -134,30 +133,30 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="edit-profile-container">
-      <h2>Edit Profile</h2>
-      <form>
+    <div className="user-profile-container">
+      <h2  className='user_edit-profile'>Edit Profile</h2>
+      <form className='user-editprofile'>
         {/* Username */}
-        <label>Username:</label>
+        <label className='user_name'>Username:</label>
         <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} required />
         {errors.user_name && <p className="error">{errors.user_name}</p>}
 
         {/* Email (Disabled) */}
-        <label>Email:</label>
+        <label className='user_email'>Email:</label>
         <input type="email" name="user_email" value={formData.user_email} disabled />
         
         {/* Phone Number */}
-        <label>Phone No:</label>
+        <label  className='user_phoneno'>Phone No:</label>
         <input type="tel" name="user_phone_number" value={formData.user_phone_number} onChange={handleChange} required />
         {errors.user_phone_number && <p className="error">{errors.user_phone_number}</p>}
 
         {/* Address */}
-        <label>Address:</label>
+        <label  className='user_address'>Address:</label>
         <textarea name="user_address" value={formData.user_address} onChange={handleChange} required></textarea>
 
         {/* Gender Selection */}
-        <label>Gender:</label>
-        <select name="user_gender" value={formData.user_gender} onChange={handleChange} required>
+        <label  className='user_gender'>Gender:</label>
+        <select name="gender" value={formData.user_gender} onChange={handleChange} required>
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -165,12 +164,12 @@ const EditProfile = () => {
         </select>
 
         {/* Age */}
-        <label>Age:</label>
+        <label  className='user_Age'>Age:</label>
         <input type="number" name="user_age" value={formData.user_age} onChange={handleChange} required />
         {errors.user_age && <p className="error">{errors.user_age}</p>}
 
         {/* Profile Picture Upload */}
-        <label>Profile Pic:</label>
+        <label  className='user_profilepic'>Profile Pic:</label>
         <input type="file" accept="image/*" onChange={handleFileChange} />
       {errors.profilePic && <p style={{ color: "red" }}>{errors.profilePic}</p>}
       
@@ -190,4 +189,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditProfile;
