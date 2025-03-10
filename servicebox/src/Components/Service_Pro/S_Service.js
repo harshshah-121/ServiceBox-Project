@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Service.css";
+import axios from "axios";
+import "./S_Service.css";
 
-const Service = () => {
+
+const S_Service = () => {
   const [formData, setFormData] = useState({
     address: "",
     gender: "",
@@ -17,11 +19,25 @@ const Service = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    alert("Form submitted successfully!");
-    console.log("Form Data:", formData);
-    
-    // Redirect to S_Navbar page after successful form submission
-    navigate("/s-login"); 
+    axios
+      .post("service_provider/main_register/", formData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((response) => {
+        alert("Registration Successful!");
+        setFormData({
+          address: "",
+          gender: "",
+          status: "",
+          aadharCard: "",
+          electricityBill: "",
+          Policeclearancecertificate:"",
+        });
+        navigate("/s-login");
+      })
+      .catch((error) => console.log("Registration error:", error));
+
   };
 
   const handleChange = (e) => {
@@ -88,4 +104,4 @@ const Service = () => {
   );
 };
 
-export default Service;
+export default S_Service;
