@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import ServiceProvider
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth import authenticate, login
+from rest_framework.serializers import ValidationError
 
 class ServiceProvider_Basic_Registration_Serializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True, required=True)
@@ -62,3 +63,26 @@ class ServiceProvider_Main_Registration_Serializer(serializers.ModelSerializer):
     #     if not value.content_type.startswith('image'):
     #         raise serializers.ValidationError("Only image files are allowed.")
     #     return value
+class ServiceProvider_Login_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceProvider 
+        fields = ['email', 'password']
+
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(write_only=True, required=True, min_length=6)
+
+    def validate(self, data):
+        email = data.get('email')
+        password = data.get('password')
+
+        # Authenticate user
+        user = authenticate(username=email, password=password)
+
+        if user is None:
+            raise ValidationError("Invalid email or password")
+
+        if not user.is_active:
+            raise ValidationError("Your account is inactive. Contact admin.")
+
+        data['user'] = user
+        return data
