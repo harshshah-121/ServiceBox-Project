@@ -3,14 +3,14 @@ import "./AboutMe.css"; // Import the CSS file
 
 const AboutMe = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
     address: "",
     phoneNumber: "",
     age: "",
   });
 
   const [errors, setErrors] = useState({
-    name: "",
+    firstname: "",
     address: "",
     phoneNumber: "",
     age: "",
@@ -25,7 +25,7 @@ const AboutMe = () => {
     e.preventDefault();
 
     let newErrors = {
-      name: formData.name.trim() === "" ? "This field is required" : "",
+      firstname: formData.firstname.trim() === "" ? "This field is required" : "",
       address: formData.address.trim() === "" ? "This field is required" : "",
       phoneNumber: formData.phoneNumber.trim() === "" ? "This field is required" : "",
       age: formData.age.trim() === "" ? "This field is required" : "",
@@ -33,7 +33,7 @@ const AboutMe = () => {
 
     setErrors(newErrors);
 
-    if (!newErrors.name && !newErrors.address && !newErrors.phoneNumber && !newErrors.age) {
+    if (!newErrors.firstname && !newErrors.address && !newErrors.phoneNumber && !newErrors.age) {
       alert("Profile updated successfully!");
       // Add API call or form submission logic here if needed
     }
@@ -47,13 +47,13 @@ const AboutMe = () => {
         <div className="form-group">
           <input
             type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
+            name="firstname"
+            placeholder="First Name"
+            value={formData.firstname}
             onChange={handleChange}
-            className={errors.name ? "input-error" : ""}
+            className={errors.firstname ? "input-error" : ""}
           />
-          {errors.name && <p className="error-text">{errors.name}</p>}
+          {errors.firstname && <p className="error-text">{errors.firstname}</p>}
         </div>
 
         <div className="form-group">

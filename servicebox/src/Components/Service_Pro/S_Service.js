@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import "./S_Service.css";
 
-
 const S_Service = () => {
   const [formData, setFormData] = useState({
     address: "",

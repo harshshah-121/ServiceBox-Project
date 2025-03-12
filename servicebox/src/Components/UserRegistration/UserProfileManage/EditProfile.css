@@ -32,7 +32,7 @@
 .usr_name, .usr_email, .usr_phoneno, .usr_address, 
 .usr_Age, .usr_gender, .usr_profilepic {
   font-weight: bold;
-  font-size: 14px; /* Smaller font */
+  font-size: 18px; /* Smaller font */
   color: #444;
   margin-bottom: -5px;
 }

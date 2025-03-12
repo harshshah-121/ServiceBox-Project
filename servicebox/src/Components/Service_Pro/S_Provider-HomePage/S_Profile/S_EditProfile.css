@@ -75,5 +75,7 @@
 
 /* Sidebar Icons */
 .service-icon {
-    font-size: 18px;
+    font-size: 14px; /* Reduced from 18px to 14px */
+    width: 20px; /* Set a fixed width to maintain consistency */
+    height: 20px; /* Set a fixed height */
 }

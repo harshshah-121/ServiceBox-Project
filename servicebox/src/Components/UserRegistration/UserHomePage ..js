@@ -2,6 +2,7 @@ import React , { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import './UserHomePage .css';
+import axios from "axios";
 import mylogo from "../images/logo.png";
 
 
@@ -27,22 +28,22 @@ const UserHomePage = ({ children }) => {
   }, []);
   return (
     <div className="user-homepage">
-       <nav className="navbar">
-      <div className="navbar-logo">
+       <nav className="user-homepage-navbar">
+      <div className="user-homepage-navbar-logo">
         <img src={mylogo} alt="Logo" />
       </div>
       <ul className="nav-links">
         <li className="nav-item">
-          <Link to="/services" className="nav-link">Services</Link>
+          <Link to="/user-services" className="nav-link">Services</Link>
         </li>
         <li className="nav-item">
-          <Link to="/contact-us" className="nav-link">Contact Us</Link>
+          <Link to="/user-contact-us" className="nav-link">Contact Us</Link>
         </li>
         <li className="nav-item">
           <Link to="/about-us" className="nav-link">About Us</Link>
         </li>
         <li className="nav-item profile-icon">
-          <Link to="/edit-profile" className="nav-link">
+          <Link to="/user-edit-profile" className="nav-link">
             <FaUserCircle size={24} />
           </Link>
         </li>
